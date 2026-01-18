@@ -18,13 +18,6 @@
     "automation"
   ],
   "skills": "./skills",
-  "agents": [
-    "./agents/ascii-ui-mockup-generator.md",
-    "./agents/codebase-pattern-finder.md",
-    "./agents/communication-excellence-coach",
-    "./agents/general-purpose.md",
-    "./agents/mermaid-diagram-specialist.md",
-    "./agents/ui-ux-designer.md"
-  ],
+  "agents": "./agents",
   "commands": "./commands"
 }
