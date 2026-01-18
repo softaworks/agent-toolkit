@@ -120,6 +120,11 @@ Convert webpages to clean Markdown using Puppeteer and Readability for JavaScrip
 
 ### Planning & Strategy
 
+#### [spec-forge](skills/spec-forge/README.md)
+Create detailed, sectionized implementation plans through research, stakeholder interviews, and multi-LLM review.
+
+**[→ Read more](skills/spec-forge/README.md)**
+
 #### [game-changing-features](skills/game-changing-features/README.md)
 Find 10x product opportunities and high-leverage improvements through strategic thinking frameworks.
 
