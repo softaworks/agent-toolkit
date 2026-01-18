@@ -17,31 +17,6 @@
     "coding",
     "automation"
   ],
-  "skills": [
-    "./skills/backend-to-frontend-handoff-docs",
-    "./skills/c4-architecture",
-    "./skills/codex",
-    "./skills/command-creator",
-    "./skills/commit-work",
-    "./skills/design-system-starter",
-    "./skills/domain-name-brainstormer",
-    "./skills/draw-io",
-    "./skills/excalidraw",
-    "./skills/frontend-to-backend-requirements",
-    "./skills/game-changing-features",
-    "./skills/gemini",
-    "./skills/marp-slide",
-    "./skills/meme-factory",
-    "./skills/mermaid-diagrams",
-    "./skills/openapi-to-typescript",
-    "./skills/perplexity",
-    "./skills/professional-communication",
-    "./skills/qa-test-planner",
-    "./skills/reducing-entropy",
-    "./skills/requirements-clarity",
-    "./skills/session-handoff",
-    "./skills/spec-forge",
-    "./skills/web-to-markdown"
-  ],
+  "skills": "./skills",
   "commands": "./commands"
 }

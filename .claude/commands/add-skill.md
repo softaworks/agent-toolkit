@@ -165,55 +165,7 @@ ls skills/[skill-name]/README.md
 - Report: "📝 No README.md found. Creating comprehensive README..."
 - Proceed to spawn sub-agent
 
-### 8. Update plugin.json
-
-Add the skill to the plugin manifest at `.claude-plugin/plugin.json`.
-
-**Read the current plugin.json:**
-
-Use the Read tool to read `.claude-plugin/plugin.json`.
-
-**Update the skills array:**
-
-1. Parse the JSON
-2. Find the `"skills"` field
-3. If it's a string (e.g., `"./skills"`), convert it to an array: `[]`
-4. Add the new skill path to the array: `"./skills/[skill-name]"`
-5. Ensure no duplicates
-
-**Example transformation:**
-
-Before:
-```json
-{
-  "skills": "./skills"
-}
-```
-
-After:
-```json
-{
-  "skills": [
-    "./skills/[skill-name]"
-  ]
-}
-```
-
-Or if skills already exist:
-```json
-{
-  "skills": [
-    "./skills/existing-skill",
-    "./skills/[new-skill-name]"
-  ]
-}
-```
-
-Use the Edit tool to update `.claude-plugin/plugin.json` with the new skills array.
-
-Report: "✅ Updated .claude-plugin/plugin.json"
-
-### 9. Spawn Sub-Agent to Create README.md (if missing)
+### 8. Spawn Sub-Agent to Create README.md (if missing)
 
 Use the Task tool to spawn a general-purpose sub-agent with this prompt:
 
@@ -243,7 +195,7 @@ Write the README.md to: skills/[skill-name]/README.md
 
 Wait for the agent to complete, then report success.
 
-### 10. Final Report
+### 9. Final Report
 
 After all steps are complete, report to the user:
 
@@ -256,12 +208,11 @@ After all steps are complete, report to the user:
 - SKILL.md: ✅ Valid
 - Naming: [✅ Consistent / ⚠️ Fixed / ⚠️ Inconsistent]
 - README.md: [✅ Exists / 📝 Created]
-- plugin.json: ✅ Updated
 
 Next steps:
 1. Review the skill at skills/[skill-name]
 2. Run /sync-skills-readme to update the root README.md table
-3. Commit the changes: git add skills/[skill-name] .claude-plugin/plugin.json && git commit -m "feat: add [skill-name] skill"
+3. Commit the changes: git add skills/[skill-name] && git commit -m "feat: add [skill-name] skill"
 ```
 
 ## Error Handling
