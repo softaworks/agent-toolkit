@@ -6,6 +6,12 @@ Skills follow the [Agent Skills](https://agentskills.io/) format.
 
 ---
 
+## 🧭 Quick Navigation
+
+**[📚 Available Skills](#-available-skills)** • **[🚀 Installation](#-installation)** • **[📖 Skill Structure](#-skill-structure)** • **[🤝 Contributing](#-contributing)** • **[📄 License](#-license)** • **[🔗 Links](#-links)**
+
+---
+
 ## 📚 Available Skills
 
 ### AI Tools & Integrations
@@ -193,29 +199,6 @@ cp -r skills/<skill-name> ~/.claude/skills/
 **For claude.ai**
 
 Add skills to project knowledge or paste SKILL.md contents into the conversation.
-
----
-
-## 💡 Usage
-
-Skills are automatically activated when relevant tasks are detected. Each skill includes trigger phrases and usage examples in its README.
-
-**Example workflows:**
-
-```
-Create a sequence diagram showing the authentication flow
-```
-→ Activates `mermaid-diagrams` skill
-
-```
-I need to commit these changes with a good message
-```
-→ Activates `commit-work` skill
-
-```
-Generate creative domain names for my SaaS project
-```
-→ Activates `domain-name-brainstormer` skill
 
 ---
 
