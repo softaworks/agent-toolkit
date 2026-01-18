@@ -166,17 +166,31 @@ Create high-quality git commits with smart splitting, Conventional Commits forma
 
 ## 🚀 Installation
 
-### For Claude Code
+### Recommended: Universal Installation (Works with all AI agents)
 
 ```bash
-# Install via plugin (recommended)
-/plugin install agent-skills@leonardocouy
+npx add-skill leonardocouy/agent-skills
+```
 
-# Or copy individual skills
+This method works with multiple AI coding agents:
+- ✅ **Claude Code** - Full plugin support
+- ✅ **Codex** - Compatible with skill format
+- ✅ **Cursor** - Works with agent skills
+- ✅ **Other Agent-based tools** - Universal compatibility
+
+### Alternative Methods
+
+**For Claude Code (Plugin)**
+```bash
+/plugin install agent-skills@leonardocouy
+```
+
+**For Claude Code (Manual)**
+```bash
 cp -r skills/<skill-name> ~/.claude/skills/
 ```
 
-### For claude.ai
+**For claude.ai**
 
 Add skills to project knowledge or paste SKILL.md contents into the conversation.
 
