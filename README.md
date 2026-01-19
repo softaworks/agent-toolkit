@@ -19,6 +19,8 @@ Skills follow the [Agent Skills](https://agentskills.io/) format.
 | 🤖 AI Tools | [codex](skills/codex/README.md) | Advanced code analysis with GPT-5.2 |
 | 🤖 AI Tools | [gemini](skills/gemini/README.md) | Large-scale review (200k+ context) |
 | 🤖 AI Tools | [perplexity](skills/perplexity/README.md) | Web search & research |
+| 🔮 Meta | [command-creator](skills/command-creator/README.md) | Create Claude Code slash commands |
+| 🔮 Meta | [plugin-forge](skills/plugin-forge/README.md) | Build Claude Code plugins & manifests |
 | 📝 Documentation | [backend-to-frontend-handoff-docs](skills/backend-to-frontend-handoff-docs/README.md) | API handoff docs for frontend |
 | 📝 Documentation | [c4-architecture](skills/c4-architecture/README.md) | C4 architecture diagrams with Mermaid |
 | 📝 Documentation | [crafting-effective-readmes](skills/crafting-effective-readmes/README.md) | Write effective README files |
@@ -31,9 +33,7 @@ Skills follow the [Agent Skills](https://agentskills.io/) format.
 | 🎨 Design & Frontend | [design-system-starter](skills/design-system-starter/README.md) | Create design systems |
 | 🎨 Design & Frontend | [mui](skills/mui/README.md) | Material-UI v7 patterns |
 | 🎨 Design & Frontend | [openapi-to-typescript](skills/openapi-to-typescript/README.md) | Convert OpenAPI to TypeScript |
-| 🛠️ Development | [command-creator](skills/command-creator/README.md) | Create reusable slash commands |
 | 🛠️ Development | [database-schema-designer](skills/database-schema-designer/README.md) | Design robust database schemas |
-| 🛠️ Development | [plugin-forge](skills/plugin-forge/README.md) | Create Claude Code plugins |
 | 🛠️ Development | [reducing-entropy](skills/reducing-entropy/README.md) | Minimize codebase size |
 | 🛠️ Development | [session-handoff](skills/session-handoff/README.md) | Seamless AI session transfers |
 | 🎯 Planning | [game-changing-features](skills/game-changing-features/README.md) | Find 10x product opportunities |
