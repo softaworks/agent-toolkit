@@ -57,7 +57,7 @@ Skills follow the [Agent Skills](https://agentskills.io/) format.
 ### Recommended: Universal Installation (Works with all AI agents)
 
 ```bash
-npx add-skill leonardocouy/agent-skills
+npx add-skill softaworks/agent-skills
 ```
 
 This method works with multiple AI coding agents:
@@ -70,7 +70,7 @@ This method works with multiple AI coding agents:
 
 **For Claude Code (Plugin)**
 ```bash
-/plugin install agent-skills@leonardocouy
+/plugin install agent-skills@softaworks
 ```
 
 **For Claude Code (Manual)**
@@ -115,4 +115,4 @@ MIT
 
 - [Agent Skills Format](https://agentskills.io/)
 - [Claude Code Documentation](https://docs.anthropic.com/claude/docs)
-- [GitHub Repository](https://github.com/leonardocouy/agent-skills)
+- [GitHub Repository](https://github.com/softaworks/agent-skills)
