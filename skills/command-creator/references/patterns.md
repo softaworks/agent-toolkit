@@ -130,8 +130,8 @@ This document describes the common patterns for slash commands, helping you choo
    - Set expectations for iterative process
    - Mention that user can refine the output
 
-2. Invoke implementation-planner agent
-   - Use Task tool with subagent_type="implementation-planner"
+2. Invoke subagent agent
+   - Use Task tool with subagent_type="subagent"
    - Pass task description and context
    - Do NOT attempt to write plan yourself
 
@@ -200,7 +200,7 @@ This document describes the common patterns for slash commands, helping you choo
    - Search for specific patterns
    - Identify key components
 
-2. Use Task tool with subagent_type="implementation-planner" to create plan
+2. Use Task tool with subagent_type="subagent" to create plan
    - Pass context from exploration
    - Generate detailed implementation plan
    - Review with user
@@ -240,9 +240,9 @@ Analyze scope of changes:
 
 If changes span 3+ files OR involve new abstractions:
 
-- Use implementation-planner agent
+- Use subagent agent
 - Create detailed plan
-- Execute with plan-executor
+- Execute with subagent
 
 Otherwise:
 
@@ -258,14 +258,13 @@ Otherwise:
 **Pattern:**
 
 ```markdown
-**IMPORTANT:** Always use devrun agent for pytest/pyright/ruff/prettier/make/gt commands
+**IMPORTANT:** Always use Bash tool for pytest/pyright/ruff/prettier/make/gt commands
 
-1. Use Task tool with subagent_type="devrun"
-   - Pass the command: "make all-ci", "pytest tests/", "pyright", etc.
-   - Do NOT use Bash tool for these dev tools
-   - Agent will handle execution and output
+1. Use Bash tool directly
+   - Run commands like: "make all-ci", "pytest tests/", "pyright", etc.
+   - Bash tool will execute and return output
 
-2. Process results from agent
+2. Process command results
    - Check exit code
    - Parse any errors
    - Apply fixes if needed

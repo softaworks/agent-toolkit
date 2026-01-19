@@ -15,7 +15,7 @@ Commands are executed by AI agents, so optimize for autonomous execution.
 
 - "Run git status to check current branch"
 - "Check if .PLAN.md exists before proceeding"
-- "Use the Task tool with subagent_type='devrun'"
+- "Use the Task tool with Bash tool"
 
 ❌ WRONG:
 
@@ -187,9 +187,9 @@ fi
 Be explicit about which tools to use.
 
 ```markdown
-**Use the devrun agent for pytest/pyright/ruff/prettier/make/gt commands:**
+**Use the Bash tool for pytest/pyright/ruff/prettier/make/gt commands:**
 
-Use Task tool with subagent_type="devrun" to run:
+Use Bash tool to run:
 \`\`\`bash
 make all-ci
 \`\`\`
@@ -356,9 +356,9 @@ Analyze the changes first:
 
 If changes span 3+ files OR involve new abstractions:
 
-- Use Task tool with subagent_type="implementation-planner"
+- Use Task tool with subagent_type="subagent"
 - Create detailed plan
-- Execute with plan-executor agent
+- Execute with subagent agent
 
 Otherwise (changes are contained):
 
@@ -372,12 +372,12 @@ Otherwise (changes are contained):
 ```markdown
 ### Running Make Commands
 
-**ALWAYS use devrun agent for pytest/pyright/ruff/prettier/make/gt commands**
+**ALWAYS use Bash tool for pytest/pyright/ruff/prettier/make/gt commands**
 
-Use Task tool with subagent_type="devrun":
+Use Bash tool:
 
 \`\`\`markdown
-Use Task tool to invoke devrun agent with command: "make all-ci"
+Use Bash tool to run command: "make all-ci"
 \`\`\`
 
 **DO NOT use Bash tool for make commands** - this is less efficient and provides worse output handling.
@@ -528,7 +528,7 @@ Use an agent to run make
 ✅ **CORRECT:**
 
 ```markdown
-Use Task tool with subagent_type="devrun" to run make commands:
+Use Bash tool to run make commands:
 
 \`\`\`bash
 make all-ci

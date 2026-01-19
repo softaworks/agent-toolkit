@@ -244,7 +244,7 @@ Create agent-executable instructions using:
 **Example**: Create implementation plan
 ```markdown
 1. Gather context (requirements, codebase)
-2. Delegate to implementation-planner agent
+2. Delegate to subagent agent
 3. Iterate on plan with user feedback
 4. Save final plan to .PLAN.md
 ```
@@ -375,7 +375,7 @@ This skill includes three comprehensive reference files in the `references/` dir
    - Description: "Iteratively fix CI failures until all tests pass"
    - Arguments: None
    - Steps: Run tests → Parse failures → Fix issues → Repeat
-4. Generates command with devrun agent for pytest
+4. Generates command with Bash tool for pytest
 5. Creates `.claude/commands/ensure-ci.md`
 6. User invokes: `/ensure-ci`
 
@@ -450,13 +450,13 @@ This skill includes three comprehensive reference files in the `references/` dir
 
 ### Tool Restrictions
 
-**Use devrun agent for**:
+**Use Bash tool for**:
 - `pytest`, `pyright`, `ruff`, `prettier`
 - `make`, `npm`, `yarn`
 - `gt` (git-town commands)
 
 **Use Task tool for**:
-- Specialized agents (`implementation-planner`, `plan-executors`)
+- Specialized agents (`subagent`, `subagents`)
 - Long-running or complex delegated tasks
 
 **Avoid in commands**:

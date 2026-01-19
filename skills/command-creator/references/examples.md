@@ -398,7 +398,7 @@ Start by running `make all-ci` and begin the iterative fix process. Track your p
 
 ```markdown
 ---
-description: Create an implementation plan using the implementation-planner agent
+description: Create an implementation plan using the subagent agent
 ---
 
 ## ⚠️ PLANNING-ONLY MODE ACTIVE
@@ -429,7 +429,7 @@ You can share:
 
 **IMPORTANT AGENT INSTRUCTIONS:**
 
-When invoking the implementation-planner agent:
+When invoking the subagent agent:
 
 1. **DO NOT write any code during planning phase**
 2. **DO NOT use Edit, Write, or any modification tools**
