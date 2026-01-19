@@ -2,6 +2,8 @@
 
 A Claude Code skill that transforms bloated agent instruction files into clean, organized documentation using progressive disclosure principles.
 
+Based on https://x.com/mattpocockuk/status/2012906065856270504 (Matt Pocock's Prompt Idea)
+
 ## Purpose
 
 Over time, agent instruction files like `CLAUDE.md`, `AGENTS.md`, or `COPILOT.md` tend to grow into unwieldy documents containing hundreds of lines of mixed instructions. This creates several problems:
