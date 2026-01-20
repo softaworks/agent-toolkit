@@ -1,7 +1,7 @@
 {
   "name": "agent-skills",
   "description": "Skills for AI coding agents following the Agent Skills format from agentskills.io",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "author": {
     "name": "Leonardo Couy",
     "url": "https://github.com/leonardocouy"
