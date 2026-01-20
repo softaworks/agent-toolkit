@@ -8,7 +8,7 @@ Skills follow the [Agent Skills](https://agentskills.io/) format.
 
 ## 🧭 Quick Navigation
 
-**[📚 Available Skills](#-available-skills)** • **[🚀 Installation](#-installation)** • **[📖 Skill Structure](#-skill-structure)** • **[🤝 Contributing](#-contributing)** • **[📄 License](#-license)** • **[🔗 Links](#-links)**
+**[📚 Available Skills](#-available-skills)** • **[🤖 Agents & Commands](#-agents--commands)** • **[🚀 Installation](#-installation)** • **[📖 Skill Structure](#-skill-structure)** • **[🤝 Contributing](#-contributing)** • **[📄 License](#-license)** • **[🔗 Links](#-links)**
 
 ---
 
@@ -57,6 +57,44 @@ Skills follow the [Agent Skills](https://agentskills.io/) format.
 
 ---
 
+## 🤖 Agents & Commands
+
+> **Requires [Claude Code CLI](https://docs.anthropic.com/claude-code)** — These agents and commands are exclusive to Claude Code users.
+>
+> For full access, add the marketplace and install the plugin:
+> ```bash
+> /plugin marketplace add softaworks/agent-skills
+> /plugin install agent-skills@skills-collection
+> ```
+
+### Agents
+
+Specialized sub-agents that Claude Code can delegate tasks to:
+
+| Agent | Description |
+|-------|-------------|
+| ascii-ui-mockup-generator | Visualize UI concepts through ASCII mockups |
+| codebase-pattern-finder | Find similar implementations and patterns |
+| communication-excellence-coach | Email refinement, tone calibration, roleplay |
+| general-purpose | Default agent for complex multi-step tasks |
+| mermaid-diagram-specialist | Create flowcharts, sequence diagrams, ERDs |
+| ui-ux-designer | Research-backed UI/UX design feedback |
+
+### Slash Commands
+
+Reusable workflows invoked with `/command-name`:
+
+| Command | Description |
+|---------|-------------|
+| `/codex-plan` | Create implementation plans using Codex 5.2 |
+| `/compose-email` | Draft professional emails |
+| `/explain-changes-mental-model` | Build mental model of code changes |
+| `/explain-pr-changes` | Generate PR summaries |
+| `/sync-branch` | Sync feature branch with main |
+| `/sync-skills-readme` | Update README skills table |
+
+---
+
 ## 🚀 Installation
 
 ### Recommended: Universal Installation (Works with all AI agents)
@@ -73,17 +111,18 @@ This method works with multiple AI coding agents:
 
 ### Alternative Methods
 
-**For Claude Code (Plugin)**
+**For Claude Code (Plugin)** — Recommended for full access to agents & commands
 ```bash
-/plugin install agent-skills@softaworks
+/plugin marketplace add softaworks/agent-skills
+/plugin install agent-skills@skills-collection
 ```
 
-**For Claude Code (Manual)**
+**For Claude Code (Manual)** — Skills only
 ```bash
 cp -r skills/<skill-name> ~/.claude/skills/
 ```
 
-**For claude.ai**
+**For claude.ai** — Skills only
 
 Add skills to project knowledge or paste SKILL.md contents into the conversation.
 

@@ -1,12 +1,13 @@
 {
-  "name": "agent-skills",
+  "name": "skills-collection",
   "owner": {
     "name": "softaworks",
     "url": "https://github.com/softaworks"
   },
-  "description": "Collection of skills for AI coding agents following the Agent Skills format",
-  "version": "1.0.14",
-  "pluginRoot": ".",
+  "metadata": {
+    "description": "Skills, agents, and commands for AI coding agents",
+    "version": "1.0.14"
+  },
   "plugins": [
     {
       "name": "agent-skills",
@@ -18,14 +19,16 @@
         "url": "https://github.com/leonardocouy"
       },
       "license": "MIT",
+      "repository": "https://github.com/softaworks/agent-skills",
       "keywords": [
         "agent",
         "skills",
         "claude",
         "ai",
-        "coding"
+        "coding",
+        "automation"
       ],
-      "category": "development"
+      "category": "productivity"
     }
   ]
 }
