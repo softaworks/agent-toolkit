@@ -467,6 +467,15 @@
       "commands": ["./commands/sync-skills-readme.md"],
       "category": "commands",
       "keywords": ["commands", "readme", "sync", "documentation"]
+    },
+    {
+      "name": "command-viral-tweet",
+      "description": "Transform a raw tweet idea into an optimized viral post for X. Analyzes engagement drivers and generates 3 optimized versions with posting strategy.",
+      "source": "./",
+      "strict": false,
+      "commands": ["./commands/viral-tweet.md"],
+      "category": "commands",
+      "keywords": ["commands", "social-media", "twitter", "x", "viral", "engagement"]
     }
   ]
 }

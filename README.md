@@ -173,6 +173,7 @@ Reusable workflows invoked with `/command-name`:
 | `/explain-pr-changes` | Generate PR summaries |
 | `/sync-branch` | Sync feature branch with main |
 | `/sync-skills-readme` | Update README skills table |
+| `/viral-tweet` | Optimize tweet ideas for X engagement |
 
 ---
 
