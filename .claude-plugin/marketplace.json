@@ -532,6 +532,23 @@
       ]
     },
     {
+      "name": "daily-meeting-update",
+      "description": "Interactive daily standup/meeting update generator. Use when user says 'daily', 'standup', 'scrum update', 'status update', or wants to prepare for daily meeting. Conducts interview (yesterday, today, blockers, discussion topics) and optionally pulls activity from GitHub/git/Jira if available and approved by user.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/daily-meeting-update"
+      ],
+      "category": "professional",
+      "keywords": [
+        "professional",
+        "standup",
+        "daily",
+        "meeting",
+        "scrum"
+      ]
+    },
+    {
       "name": "professional-communication",
       "description": "Guide technical communication for software developers. Covers email structure, team messaging etiquette, meeting agendas, and adapting messages for technical vs non-technical audiences.",
       "source": "./",

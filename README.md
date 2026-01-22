@@ -126,6 +126,7 @@ Add skills to project knowledge or paste SKILL.md contents into the conversation
 | 🎯 Planning | [gepetto](skills/gepetto/README.md) | Detailed implementation planning |
 | 🎯 Planning | [requirements-clarity](skills/requirements-clarity/README.md) | Clarify requirements before coding |
 | 🎯 Planning | [ship-learn-next](skills/ship-learn-next/README.md) | Turn learning into actionable reps |
+| 👔 Professional | [daily-meeting-update](skills/daily-meeting-update/README.md) | Interactive daily standup generator |
 | 👔 Professional | [difficult-workplace-conversations](skills/difficult-workplace-conversations/README.md) | Navigate difficult conversations |
 | 👔 Professional | [feedback-mastery](skills/feedback-mastery/README.md) | Deliver constructive feedback |
 | 👔 Professional | [professional-communication](skills/professional-communication/README.md) | Technical communication guide |
