@@ -68,13 +68,13 @@ classDiagram
     Title *-- Season
     Title *-- Review
     User --> Review : creates
-    
+
     class Title {
         +string name
         +int releaseYear
         +play()
     }
-    
+
     class Genre {
         +string name
         +getTopTitles()
@@ -87,7 +87,7 @@ sequenceDiagram
     participant User
     participant API
     participant Database
-    
+
     User->>API: POST /login
     API->>Database: Query credentials
     Database-->>API: Return user data
@@ -117,14 +117,14 @@ erDiagram
     USER ||--o{ ORDER : places
     ORDER ||--|{ LINE_ITEM : contains
     PRODUCT ||--o{ LINE_ITEM : includes
-    
+
     USER {
         int id PK
         string email UK
         string name
         datetime created_at
     }
-    
+
     ORDER {
         int id PK
         int user_id FK
@@ -142,6 +142,7 @@ For in-depth guidance on specific diagram types, see:
 - **[references/flowcharts.md](references/flowcharts.md)** - Node shapes, connections, decision logic, subgraphs, styling
 - **[references/erd-diagrams.md](references/erd-diagrams.md)** - Entities, relationships, cardinality, keys, attributes
 - **[references/c4-diagrams.md](references/c4-diagrams.md)** - System context, container, component diagrams, boundaries
+- **[references/architecture-diagrams.md](references/architecture-diagrams.md)** - Cloud services, infrastructure, CI/CD deployments
 - **[references/advanced-features.md](references/advanced-features.md)** - Themes, styling, configuration, layout options
 
 ## Best Practices

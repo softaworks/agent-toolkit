@@ -195,6 +195,7 @@ For comprehensive syntax and advanced features, see:
 - **[references/flowcharts.md](references/flowcharts.md)** - Node shapes, decision logic, subgraphs
 - **[references/erd-diagrams.md](references/erd-diagrams.md)** - Cardinality, keys, attributes
 - **[references/c4-diagrams.md](references/c4-diagrams.md)** - Context, container, component levels
+- **[references/architecture-diagrams.md](references/architecture-diagrams.md)** - Cloud services, infrastructure, CI/CD deployments
 - **[references/advanced-features.md](references/advanced-features.md)** - Themes, styling, configuration
 
 ## Best Practices
