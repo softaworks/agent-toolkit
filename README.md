@@ -20,7 +20,7 @@ Skills follow the [Agent Skills](https://agentskills.io/) format.
 npx skills add softaworks/agent-toolkit
 ```
 
-This method works with multiple AI coding agents (Claude Code, Codex, Cursor, etc.)
+This method works with multiple AI coding agents (Claude Code, Codex, Cursor, AdaL, etc.)
 
 ### Register as Plugin Marketplace
 
