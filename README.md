@@ -20,11 +20,11 @@ Skills follow the [Agent Skills](https://agentskills.io/) format.
 npx skills add softaworks/agent-toolkit
 ```
 
-This method works with multiple AI coding agents (Claude Code, Codex, Cursor, AdaL, etc.)
+This method works with multiple AI coding agents (Claude Code, Codex, Cursor, AdaL CLI, etc.)
 
 ### Register as Plugin Marketplace
 
-Run the following commands in Claude Code:
+Run the following commands in Claude Code (and AdaL CLI):
 
 ```bash
 /plugin marketplace add softaworks/agent-toolkit
@@ -72,7 +72,7 @@ Each skill, agent, and command is an individual plugin that can be installed sep
 
 To update plugins to the latest version:
 
-1. Run `/plugin` in Claude Code
+1. Run `/plugin` in Claude Code (or AdaL CLI)
 2. Switch to **Marketplaces** tab
 3. Select **agent-toolkit**
 4. Choose **Update marketplace**
@@ -81,7 +81,7 @@ You can also **Enable auto-update** to get the latest versions automatically.
 
 ### Manual Installation
 
-**For Claude Code (Manual)** — Skills only
+**For Claude Code / AdaL CLI (Manual)** — Skills only
 ```bash
 cp -r skills/<skill-name> ~/.claude/skills/
 ```
