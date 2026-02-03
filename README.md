@@ -20,11 +20,11 @@ Skills follow the [Agent Skills](https://agentskills.io/) format.
 npx skills add softaworks/agent-toolkit
 ```
 
-This method works with multiple AI coding agents (Claude Code, Codex, Cursor, AdaL, etc.)
+This method works with multiple AI coding agents (Claude Code, Codex, Cursor, AdaL CLI, etc.)
 
 ### Register as Plugin Marketplace
 
-Run the following commands in Claude Code:
+Run the following commands in Claude Code or AdaL CLI:
 
 ```bash
 /plugin marketplace add softaworks/agent-toolkit
@@ -143,7 +143,7 @@ Add skills to project knowledge or paste SKILL.md contents into the conversation
 
 ## 🤖 Agents & Commands
 
-> **Requires [Claude Code CLI](https://docs.anthropic.com/claude-code)** — These agents and commands are exclusive to Claude Code users.
+> **Requires [Claude Code CLI](https://docs.anthropic.com/claude-code) or [AdaL CLI](https://sylph.ai/)** — These agents and commands work with both Claude Code and AdaL.
 >
 > For full access, add the marketplace and install plugins:
 > ```bash
@@ -153,7 +153,7 @@ Add skills to project knowledge or paste SKILL.md contents into the conversation
 
 ### Agents
 
-Specialized sub-agents that Claude Code can delegate tasks to:
+Specialized sub-agents that Claude Code or AdaL can delegate tasks to:
 
 | Agent | Description |
 |-------|-------------|
