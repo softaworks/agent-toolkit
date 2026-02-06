@@ -120,6 +120,7 @@ Add skills to project knowledge or paste SKILL.md contents into the conversation
 | 🛠️ Development | [database-schema-designer](skills/database-schema-designer/README.md) | Design robust database schemas |
 | 🛠️ Development | [dependency-updater](skills/dependency-updater/README.md) | Smart dependency management |
 | 🛠️ Development | [naming-analyzer](skills/naming-analyzer/README.md) | Suggest better variable/function names |
+| 🛠️ Development | [lesson-learned](skills/lesson-learned/README.md) | Extract SE lessons from recent code changes |
 | 🛠️ Development | [reducing-entropy](skills/reducing-entropy/README.md) | Minimize codebase size |
 | 🛠️ Development | [session-handoff](skills/session-handoff/README.md) | Seamless AI session transfers |
 | 🎯 Planning | [game-changing-features](skills/game-changing-features/README.md) | Find 10x product opportunities |

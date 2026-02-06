@@ -436,6 +436,23 @@
       ]
     },
     {
+      "name": "lesson-learned",
+      "description": "Analyze recent code changes via git history and extract software engineering lessons. Use when reflecting on work or asking 'what is the lesson here?'",
+      "source": "./dist/plugins/lesson-learned",
+      "strict": false,
+      "skills": [
+        "./skills/lesson-learned"
+      ],
+      "category": "development",
+      "keywords": [
+        "development",
+        "reflection",
+        "git",
+        "learning",
+        "principles"
+      ]
+    },
+    {
       "name": "game-changing-features",
       "description": "Find 10x product opportunities and high-leverage improvements. Use when user wants strategic product thinking or wants to find high-impact features.",
       "source": "./dist/plugins/game-changing-features",
