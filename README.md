@@ -132,6 +132,7 @@ Add skills to project knowledge or paste SKILL.md contents into the conversation
 | 👔 Professional | [feedback-mastery](skills/feedback-mastery/README.md) | Deliver constructive feedback |
 | 👔 Professional | [professional-communication](skills/professional-communication/README.md) | Technical communication guide |
 | 🧪 Testing | [qa-test-planner](skills/qa-test-planner/README.md) | Comprehensive QA test planning |
+| 🧪 Testing | [playwright-skill](https://github.com/testdino-hq/playwright-skill) | 70+ structured Playwright testing skill for AI agents |
 | 📦 Git | [commit-work](skills/commit-work/README.md) | High-quality git commits |
 | 🔧 Utilities | [datadog-cli](skills/datadog-cli/README.md) | Debug with Datadog logs & metrics |
 | 🔧 Utilities | [domain-name-brainstormer](skills/domain-name-brainstormer/README.md) | Generate & check domain names |
