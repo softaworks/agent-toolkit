@@ -1,6 +1,6 @@
 ---
 name: gepetto
-description: Creates detailed, sectionized implementation plans through research, stakeholder interviews, and multi-LLM review. Use when planning features that need thorough pre-implementation analysis.
+description: Generates implementation plans with task breakdowns, dependency graphs, and section-by-section specs through automated research, stakeholder interviews, and multi-LLM review. Use when building a technical spec, design document, project roadmap, architecture plan, or feature specification that needs thorough pre-implementation analysis before coding begins.
 ---
 
 # Gepetto
@@ -29,24 +29,13 @@ Note: GEPETTO will write many .md files to the planning directory you pass it
 
 If NO @file was provided OR the path doesn't end with `.md`, output this and STOP:
 ```
-═══════════════════════════════════════════════════════════════
 GEPETTO: Spec File Required
-═══════════════════════════════════════════════════════════════
+Requires a .md spec file. Planning directory is inferred from the spec's parent directory.
 
-This skill requires a markdown spec file path (must end with .md).
-The planning directory is inferred from the spec file's parent directory.
-
-To start a NEW plan:
-  1. Create a markdown spec file describing what you want to build
-  2. It can be as detailed or as vague as you like
-  3. Place it in a directory where gepetto can save planning files
-  4. Run: /gepetto @path/to/your-spec.md
-
-To RESUME an existing plan:
-  1. Run: /gepetto @path/to/your-spec.md
+  New plan:    Create a spec .md file, then run /gepetto @path/to/your-spec.md
+  Resume plan: Run /gepetto @path/to/your-spec.md (existing files are detected automatically)
 
 Example: /gepetto @planning/my-feature-spec.md
-═══════════════════════════════════════════════════════════════
 ```
 **Do not continue. Wait for user to re-invoke with a .md file path.**
 

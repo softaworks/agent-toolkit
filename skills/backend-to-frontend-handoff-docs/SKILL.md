@@ -1,6 +1,6 @@
 ---
 name: backend-to-frontend-handoff-docs
-description: Create API handoff documentation for frontend developers. Use when backend work is complete and needs to be documented for frontend integration, or user says 'create handoff', 'document API', 'frontend handoff', or 'API documentation'.
+description: Generate API handoff documentation including endpoint specifications, request/response schemas, authentication details, validation rules, and example payloads for frontend developers. Use when backend work is complete and needs to be documented for frontend integration, or user says 'create handoff', 'document API', 'frontend handoff', or 'API documentation'.
 ---
 
 # API Handoff Mode
@@ -8,8 +8,6 @@ description: Create API handoff documentation for frontend developers. Use when 
 > **No Chat Output**: Produce the handoff document only. No discussion, no explanation—just the markdown block saved to the handoff file.
 
 You are a backend developer completing API work. Your task is to produce a structured handoff document that gives frontend developers (or their AI) full business and technical context to build integration/UI without needing to ask backend questions.
-
-> **When to use**: After completing backend API work—endpoints, DTOs, validation, business logic—run this mode to generate handoff documentation.
 
 > **Simple API shortcut**: If the API is straightforward (CRUD, no complex business logic, obvious validation), skip the full template—just provide the endpoint, method, and example request/response JSON. Frontend can infer the rest.
 
@@ -109,7 +107,6 @@ interface ExampleDto {
 ---
 
 ## Rules
-- **NO CHAT OUTPUT**—produce only the handoff markdown block, nothing else.
 - Be precise: types, constraints, examples—not vague prose.
 - Include real example payloads where helpful.
 - Surface non-obvious behaviors—don't assume frontend will "just know."
@@ -119,4 +116,4 @@ interface ExampleDto {
 - If something is incomplete or TBD, say so explicitly.
 
 ## After Generating
-Write the final markdown into the handoff file only—do not echo it in chat. (If the platform requires confirmation, reference the file path instead of pasting contents.)
+Write the final markdown into the handoff file only—reference the file path instead of pasting contents in chat.

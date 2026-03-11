@@ -12,7 +12,8 @@ Generate software architecture documentation using C4 model diagrams in Mermaid 
 1. **Understand scope** - Determine which C4 level(s) are needed based on audience
 2. **Analyze codebase** - Explore the system to identify components, containers, and relationships
 3. **Generate diagrams** - Create Mermaid C4 diagrams at appropriate abstraction levels
-4. **Document** - Write diagrams to markdown files with explanatory context
+4. **Validate** - Verify all relationships have technology labels, every element has a description, and diagrams render correctly in Mermaid preview
+5. **Document** - Write diagrams to markdown files with explanatory context
 
 ## C4 Diagram Levels
 
@@ -203,22 +204,14 @@ Use `$offsetX` and `$offsetY` to fix overlapping relationship labels.
 4. **Include technology labels** - "JSON/HTTPS", "JDBC", "gRPC"
 5. **Stay under 20 elements per diagram** - Split complex systems into multiple diagrams
 
-### Clarity Guidelines
-
-1. **Start at Level 1** - Context diagrams help frame the system scope
-2. **One diagram per file** - Keep diagrams focused on a single abstraction level
-3. **Meaningful aliases** - Use descriptive aliases (e.g., `orderService` not `s1`)
-4. **Concise descriptions** - Keep descriptions under 50 characters when possible
-5. **Always include a title** - "System Context diagram for [System Name]"
-
-### What to Avoid
+### C4-Specific Gotchas
 
 See [references/common-mistakes.md](references/common-mistakes.md) for detailed anti-patterns:
-- Confusing containers (deployable) vs components (non-deployable)
-- Modeling shared libraries as containers
-- Showing message brokers as single containers instead of individual topics
-- Adding undefined abstraction levels like "subcomponents"
-- Removing type labels to "simplify" diagrams
+- Confusing containers (deployable units) vs components (non-deployable modules within a container)
+- Modeling shared libraries as containers — they are not independently deployable
+- Showing message brokers as single containers instead of individual topics/queues
+- Adding undefined abstraction levels like "subcomponents" — C4 has exactly four levels
+- Removing type labels to "simplify" diagrams — types are what make C4 diagrams self-describing
 
 ## Microservices Guidelines
 

@@ -1,24 +1,12 @@
 ---
 name: agent-md-refactor
-description: Refactor bloated AGENTS.md, CLAUDE.md, or similar agent instruction files to follow progressive disclosure principles. Splits monolithic files into organized, linked documentation.
+description: Refactor bloated AGENTS.md, CLAUDE.md, COPILOT.md, or similar agent instruction files into organized, linked documentation following progressive disclosure principles. Use when files are too long, hard to maintain, or the user wants to split, reorganize, break up, or simplify their agent configuration files.
 license: MIT
 ---
 
 # Agent MD Refactor
 
 Refactor bloated agent instruction files (AGENTS.md, CLAUDE.md, COPILOT.md, etc.) to follow **progressive disclosure principles** - keeping essentials at root and organizing the rest into linked, categorized files.
-
----
-
-## Triggers
-
-Use this skill when:
-- "refactor my AGENTS.md" / "refactor my CLAUDE.md"
-- "split my agent instructions"
-- "organize my CLAUDE.md file"
-- "my AGENTS.md is too long"
-- "progressive disclosure for my instructions"
-- "clean up my agent config"
 
 ---
 
@@ -101,9 +89,10 @@ Organize remaining instructions into logical categories.
 
 **Grouping rules:**
 1. Each file should be self-contained for its topic
-2. Aim for 3-8 files (not too granular, not too broad)
+2. Aim for 3-8 files (not too granular, not too broad) — too many categories cause fragmentation
 3. Name files clearly: `{topic}.md`
-4. Include only actionable instructions
+4. Include only actionable instructions — vague guidance wastes tokens
+5. Use a flat structure with links — avoid deep nesting
 
 ---
 
@@ -214,18 +203,6 @@ Identify instructions that should be removed entirely.
 [ ] Verify: Root file is under 50 lines
 [ ] Verify: All links work correctly
 ```
-
----
-
-## Anti-Patterns
-
-| Avoid | Why | Instead |
-|-------|-----|---------|
-| Keeping everything in root | Bloated, hard to maintain | Split into linked files |
-| Too many categories | Fragmentation | Consolidate related topics |
-| Vague instructions | Wastes tokens, no value | Be specific or delete |
-| Duplicating defaults | Agent already knows | Only override when needed |
-| Deep nesting | Hard to navigate | Flat structure with links |
 
 ---
 

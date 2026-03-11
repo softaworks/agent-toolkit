@@ -1,6 +1,6 @@
 ---
 name: dependency-updater
-description: Smart dependency management for any language. Auto-detects project type, applies safe updates automatically, prompts for major versions, diagnoses and fixes dependency issues.
+description: Smart dependency management for any language. Auto-detects project type, applies safe updates automatically, prompts for major versions, diagnoses and fixes dependency issues. Use when updating packages, resolving version conflicts, running npm/pip/cargo/go outdated checks, upgrading dependencies in package.json, requirements.txt, go.mod, or Cargo.toml, or auditing for vulnerabilities.
 license: MIT
 metadata:
   version: 1.0.0
@@ -248,33 +248,7 @@ go mod tidy
 
 ---
 
-## Security Audit
-
-Run security checks for any project:
-
-```bash
-# Node.js
-npm audit
-npm audit --json | jq '.metadata.vulnerabilities'
-
-# Python
-pip-audit
-safety check
-
-# Go
-govulncheck ./...
-
-# Rust
-cargo audit
-
-# Ruby
-bundle audit
-
-# .NET
-dotnet list package --vulnerable
-```
-
-### Severity Response
+## Severity Response
 
 | Severity | Action |
 |----------|--------|
@@ -381,43 +355,6 @@ Some packages have frequent major bumps but are backward-compatible:
 </details>
 
 <details>
-<summary><strong>Deep Dive: Version Strategies</strong></summary>
-
-### Semantic Versioning
-
-```
-MAJOR.MINOR.PATCH (e.g., 2.3.1)
-
-MAJOR: Breaking changes - requires code changes
-MINOR: New features - backward compatible
-PATCH: Bug fixes - backward compatible
-```
-
-### Range Specifiers
-
-| Specifier | Meaning | Example |
-|-----------|---------|---------|
-| `^1.2.3` | Minor + Patch OK | `>=1.2.3 <2.0.0` |
-| `~1.2.3` | Patch only | `>=1.2.3 <1.3.0` |
-| `1.2.3` | Exact (fixed) | Only `1.2.3` |
-| `>=1.2.3` | At least | Any `>=1.2.3` |
-| `*` | Any | Latest (dangerous) |
-
-### Recommended Strategy
-
-```json
-{
-  "dependencies": {
-    "critical-lib": "1.2.3",      // Exact for critical
-    "stable-lib": "~1.2.3",       // Patch only for stable
-    "modern-lib": "^1.2.3"        // Minor OK for active
-  }
-}
-```
-
-</details>
-
-<details>
 <summary><strong>Deep Dive: Conflict Resolution</strong></summary>
 
 ### Node.js Conflicts
@@ -480,12 +417,3 @@ pip install -c constraints.txt -r requirements.txt
 
 ---
 
-## Related Tools
-
-| Tool | Language | Purpose |
-|------|----------|---------|
-| [taze](https://github.com/antfu-collective/taze) | Node.js | Smart dependency updates |
-| [npm-check-updates](https://github.com/raineorshine/npm-check-updates) | Node.js | Alternative to taze |
-| [pip-review](https://github.com/jgonggrijp/pip-review) | Python | Interactive pip updates |
-| [cargo-edit](https://github.com/killercup/cargo-edit) | Rust | Cargo dependency management |
-| [bundler-audit](https://github.com/rubysec/bundler-audit) | Ruby | Security auditing |

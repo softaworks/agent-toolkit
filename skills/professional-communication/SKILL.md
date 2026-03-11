@@ -1,6 +1,6 @@
 ---
 name: professional-communication
-description: Guide technical communication for software developers. Covers email structure, team messaging etiquette, meeting agendas, and adapting messages for technical vs non-technical audiences. Use when drafting professional messages, preparing meeting communications, or improving written communication.
+description: Guide technical communication for software developers. Covers email structure, Slack and Teams messaging etiquette, meeting agendas, PR descriptions, code review comments, and adapting messages for technical vs non-technical audiences. Use when developers need help writing emails, crafting Slack messages, phrasing PR descriptions, explaining code to non-technical stakeholders, preparing meeting agendas, writing status updates, or adjusting tone for different audiences.
 allowed-tools: Read, Glob, Grep
 ---
 
@@ -8,22 +8,23 @@ allowed-tools: Read, Glob, Grep
 
 ## Overview
 
-This skill provides frameworks and guidance for effective professional communication in software development contexts. Whether you're writing an email to stakeholders, crafting a team chat message, or preparing meeting agendas, these principles help you communicate clearly and build professional credibility.
+Frameworks and templates for professional communication in software development: emails, Slack/Teams messages, PR descriptions, meeting agendas, and cross-audience translation.
 
-**Core principle:** Effective communication isn't about proving how much you know - it's about ensuring your message is received and understood.
+**Core principle:** Ensure your message is received and understood by the right audience.
 
 ## When to Use This Skill
 
 Use this skill when:
 
 - Writing emails to teammates, managers, or stakeholders
-- Crafting team chat messages or async communications
+- Crafting Slack, Teams, or Discord messages and async communications
+- Writing PR descriptions or code review comments
 - Preparing meeting agendas or summaries
 - Translating technical concepts for non-technical audiences
-- Structuring status updates or reports
-- Improving clarity of written communication
+- Structuring status updates, reports, or incident postmortems
+- Adjusting tone or phrasing for different audiences
 
-**Keywords**: email, chat, teams, slack, discord, message, writing, communication, meeting, agenda, status update, report
+**Keywords**: email, write an email, chat, teams, slack, discord, message, writing, communication, meeting, agenda, status update, report, PR description, code review, how to phrase, tone, postmortem
 
 ## Core Frameworks
 
@@ -41,9 +42,9 @@ Use this universal framework to organize any professional message:
 
 ### Three Golden Rules for Written Communication
 
-1. **Start with a clear subject/purpose** - Recipients should immediately grasp what your message is about
-2. **Use bullets, headlines, and scannable formatting** - Nobody wants a wall of text
-3. **Key messages first** - Busy people appreciate efficiency; state your main point upfront
+1. **Start with a clear subject/purpose** - Recipients should immediately grasp intent
+2. **Use bullets, headlines, and scannable formatting** - Make content skimmable
+3. **Key messages first** - State your main point upfront
 
 ### Audience Calibration
 
@@ -158,8 +159,6 @@ You: Hi Sarah - quick question about the deployment script.
 
 | Technical | Plain Language |
 | --- | --- |
-| "Microservices architecture" | "Our system is split into smaller, independent pieces that can scale separately" |
-| "Asynchronous message processing" | "Tasks are queued and processed in the background" |
 | "CI/CD pipeline" | "Automated process that tests and deploys our code" |
 | "Database migration" | "Updating how our data is organized and stored" |
 
@@ -167,31 +166,9 @@ You: Hi Sarah - quick question about the deployment script.
 
 ## Writing Clarity Principles
 
-### Active Voice Over Passive Voice
-
-Active voice is clearer, more direct, and conveys authority:
-
-| Passive (avoid) | Active (prefer) |
-| --- | --- |
-| "A bug was identified by the team" | "The team identified a bug" |
-| "The feature will be implemented" | "We will implement the feature" |
-| "Errors were found during testing" | "Testing revealed errors" |
-
-### Eliminate Filler Words
-
-| Instead of | Use |
-| --- | --- |
-| "At this point in time" | "Now" |
-| "In the event that" | "If" |
-| "Due to the fact that" | "Because" |
-| "In order to" | "To" |
-| "I just wanted to check if" | "Can you" |
-
-### The "So What?" Test
-
-After writing, ask: "So what? Why does this matter to the reader?"
-
-If you can't answer clearly, restructure your message to lead with the value/impact.
+- **Prefer active voice** - "The team identified a bug" over "A bug was identified by the team"
+- **Cut filler phrases** - Replace "in order to" with "to", "due to the fact that" with "because", "I just wanted to check if" with "Can you"
+- **Apply the "So What?" test** - After writing, ask: "Why does this matter to the reader?" If unclear, restructure to lead with value/impact
 
 ## Meeting Communication
 

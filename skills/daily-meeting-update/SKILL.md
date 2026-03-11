@@ -12,31 +12,9 @@ Generate a daily standup/meeting update through an **interactive interview**. Ne
 
 ## Workflow
 
-```
-START
-  │
-  ▼
-┌─────────────────────────────────────────────────────┐
-│ Phase 1: DETECT & OFFER INTEGRATIONS                │
-│ • Check: Claude Code history? gh CLI? jira CLI?     │
-│ • Claude Code → Pull yesterday's session digest     │
-│   → User selects relevant items via multiSelect     │
-│ • GitHub/Jira → Ask user, pull if approved          │
-│ • Pull data NOW (before interview)                  │
-├─────────────────────────────────────────────────────┤
-│ Phase 2: INTERVIEW (with insights)                  │
-│ • Show pulled data as context                       │
-│ • Yesterday: "I see you merged PR #123, what else?" │
-│ • Today: What will you work on?                     │
-│ • Blockers: Anything blocking you?                  │
-│ • Topics: Anything to discuss at end of meeting?    │
-├─────────────────────────────────────────────────────┤
-│ Phase 3: GENERATE UPDATE                            │
-│ • Combine interview answers + tool data             │
-│ • Format as clean Markdown                          │
-│ • Present to user                                   │
-└─────────────────────────────────────────────────────┘
-```
+1. **Detect & Offer Integrations** - Silently check for gh/jira/Claude Code, ask user for consent, pull approved data
+2. **Interview (with insights)** - Ask 4 questions using pulled data as context to trigger memory
+3. **Generate Update** - Combine interview answers + tool data into clean Markdown
 
 ---
 
@@ -104,8 +82,6 @@ Options:
 **Key insight**: Store results to use as context in Phase 2 interview.
 
 ### Step 4: Offer Claude Code History
-
-This integration captures everything you worked on with Claude Code — useful for recalling work that isn't in git or Jira.
 
 **Detection:**
 ```bash
@@ -301,108 +277,19 @@ python3 ~/.claude/skills/daily-meeting-update/scripts/claude_digest.py --project
 
 ---
 
-## Example Session
+## Examples
 
-```
-Claude: "Let's prepare your daily! I detected GitHub configured. Want me to pull your recent activity?"
-User: "Yes"
-
-Claude: "Which repos should I check?"
-User: "backend-api and frontend-app"
-
-[Claude pulls GitHub data silently]
-
-Claude: "I can also pull your Claude Code session history from yesterday. Want me to check?"
-User: "Yes"
-
-[Claude runs digest script, gets 5 sessions]
-
-Claude: "Here are your Claude Code sessions from yesterday. Select the ones relevant to your standup:"
-  ☑ Fix authentication timeout bug (backend-api)
-  ☑ Implement OAuth flow (backend-api)
-  ☐ Update personal blog (blog) - [user unchecks personal project]
-  ☑ Research payment providers (docs)
-  ☐ Debugging test failures (experiments)
-
-User: [selects 3 relevant items]
-
-Claude: "Here's what I found from your activity:
-- Merged PR #120: fix login timeout
-- Opened PR #125: feat: add OAuth flow
-- Reviewed PR #123 (approved), PR #456 (changes requested)
-- 5 commits in backend-api
-- [From Claude Code] Fix authentication timeout bug
-- [From Claude Code] Implement OAuth flow
-- [From Claude Code] Research payment providers
-
-Anything else you worked on yesterday that I missed?"
-User: "No, that covers it"
-
-Claude: "What will you work on today?"
-User: "Continue the OAuth feature and deploy to staging"
-
-Claude: "Any blockers?"
-User: "No"
-
-Claude: "Any topic to bring up at the end of the daily?"
-User: "Yes, I want to discuss the architecture of the new payments module"
-
-[Claude generates update]
-```
+For a complete example session and output template, see [references/examples.md](references/examples.md).
 
 ---
 
-## Output Example
+## Constraints
 
-```markdown
-# Daily Update - 2026-01-22
-
-## Yesterday
-- Worked on authentication feature
-- Research on payment providers
-- Merged PR #120 (fix: login timeout)
-- Opened PR #125 (feat: add OAuth flow)
-
-## Today
-- Continue OAuth feature
-- Deploy to staging
-
-## Blockers
-- No blockers
-
-## PRs & Reviews
-- **Opened:** PR #125 - feat: add OAuth flow
-- **Merged:** PR #120 - fix: login timeout
-- **Reviews:** PR #123 (approved), PR #456 (changes requested)
-
-## Topics for Discussion
-- Architecture of the new payments module
-
----
-*Links:*
-- https://github.com/org/repo/pull/125
-- https://github.com/org/repo/pull/120
-```
-
----
-
-## Anti-Patterns
-
-| Avoid | Why (Expert Knowledge) | Instead |
-|-------|------------------------|---------|
-| Run gh/jira without asking | Users may have personal repos visible, or be in a sensitive project context they don't want exposed | Always ask first, let user choose repos |
-| Assume current directory is the only project | Developers often work on 2-5 repos simultaneously (frontend, backend, infra) | Ask "Which projects are you working on?" |
-| Skip interview even with tool data | Tools capture WHAT happened but miss WHY and context (research, meetings, planning) | Interview is primary, tools supplement |
-| Generate update before all 4 questions | User might have critical blocker or discussion topic that changes the narrative | Complete interview, then generate |
-| Include raw commit messages | Commit messages are often cryptic ("fix", "wip") and don't tell the story | Summarize into human-readable outcomes |
-| Ask for data after interview | Showing insights during interview makes questions smarter ("I see you merged PR #123, anything else?") | Pull data first, then interview with context |
-
----
-
-## NEVER
-
-- **NEVER assume tools are configured** — Many devs have gh installed but not authenticated, or jira CLI pointing to wrong instance
-- **NEVER skip the "Topics for Discussion" question** — This is often the most valuable part of standup that tools can't capture
-- **NEVER generate more than 15 bullets** — Standup should be <2 minutes to read; long updates lose the audience
-- **NEVER include ticket/PR numbers without context** — "PROJ-123" means nothing; always include title or summary
-- **NEVER pull data from repos user didn't explicitly approve** — Even if you can see other repos, respect boundaries
+- **Never assume tools are configured** — detect silently, ask before pulling
+- **Never skip "Topics for Discussion"** — often the most valuable part that tools cannot capture
+- **Never generate more than 15 bullets** — standup should be <2 minutes to read
+- **Never include ticket/PR numbers without context** — always include title or summary
+- **Never pull data from repos user didn't approve** — respect boundaries
+- **Always pull data before interview** — showing insights makes questions smarter
+- **Always complete all 4 questions before generating** — blockers or discussion topics may change the narrative
+- **Summarize, don't copy** — raw commit messages ("fix", "wip") don't tell the story

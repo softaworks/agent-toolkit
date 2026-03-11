@@ -1,77 +1,52 @@
 ---
 name: web-to-markdown
-description: "Use ONLY when the user explicitly says: 'use the skill web-to-markdown ...' (or 'use a skill web-to-markdown ...'). Converts webpage URLs to clean Markdown by calling the local web2md CLI (Puppeteer + Readability), suitable for JS-rendered pages."
+description: "Use when the user wants to scrape a webpage, convert a URL to markdown, fetch website content as text, or extract page text for reading. Converts webpage URLs to clean Markdown by calling the local web2md CLI (Puppeteer + Readability), handling JS-rendered pages, login walls, and batch URL conversion."
 metadata:
   version: 0.1.0
 ---
 
 # web-to-markdown
 
-Convert web pages to clean Markdown by driving a locally installed browser (via `web2md`).
-
-## Hard trigger gate (must enforce)
-
-This skill MUST NOT be used unless the user explicitly wrote **exactly** a phrase like:
-- `use the skill web-to-markdown ...`
-- `use a skill web-to-markdown ...`
-
-If the user did not explicitly request this skill by name, stop and ask them to re-issue the request including: `use the skill web-to-markdown`.
-
-## What this skill does
-
-- Handles JS-rendered pages (Puppeteer → user Chrome).
-- Works best with Chromium-family browsers (Chrome/Chromium/Brave/Edge) via `puppeteer-core`.
-- Extracts main content (Readability).
-- Converts to Markdown (Turndown) with cleaned links and optional YAML frontmatter.
+Convert web pages to clean Markdown using the `web2md` CLI. Handles JS-rendered pages via Puppeteer, extracts main content with Readability, and outputs clean Markdown with Turndown.
 
 ## Non-goals
 
-- Do not use Playwright or other browser automation stacks; the mechanism is `web2md`.
+- Do not use Playwright or other browser automation stacks; always use `web2md`.
 
-## Inputs you should collect (ask only if missing)
+## Inputs (ask only if missing)
 
 - `url` (or a list of URLs)
-- Output preference:
-  - Print to stdout (`--print`), OR
-  - Save to a file (`--out ./file.md`), OR
-  - Save to a directory (`--out ./some-dir/` to auto-name by page title)
-- Optional rendering controls for tricky pages:
-  - `--chrome-path <path>` (if Chrome auto-detection fails)
-  - `--interactive` (show Chrome and pause so the user can complete human checks/login, then press Enter)
-  - `--wait-until load|domcontentloaded|networkidle0|networkidle2`
-  - `--wait-for '<css selector>'`
-  - `--wait-ms <milliseconds>`
-  - `--headful` (debug)
-  - `--no-sandbox` (sometimes required in containers/CI)
-  - `--user-data-dir <dir>` (login/session; use a dedicated profile directory)
+- Output preference: print to stdout (`--print`), save to file (`--out ./file.md`), or save to directory (`--out ./dir/`)
 
 ## Workflow
 
-1) Confirm the user explicitly invoked the skill (`use the skill web-to-markdown`).
-2) Validate URL(s) start with `http://` or `https://`.
-3) Ensure `web2md` is installed:
+1. Validate URL(s) start with `http://` or `https://`.
+2. Ensure `web2md` is installed:
    - Run: `command -v web2md`
-   - If missing, instruct the user to install it (assume the project exists at `~/workspace/softaworks/projects/web2md`):
-     - `cd ~/workspace/softaworks/projects/web2md && npm install && npm run build && npm link`
-     - Or: `cd ~/workspace/softaworks/projects/web2md && npm install && npm run build && npm install -g .`
-4) Convert:
-   - Single URL → file:
-     - `web2md '<url>' --out ./page.md`
-   - Single URL → auto-named file in directory:
-     - `mkdir -p ./out && web2md '<url>' --out ./out/`
-   - Human verification / login walls (interactive):
-     - `mkdir -p ./out && web2md '<url>' --interactive --user-data-dir ./tmp/web2md-profile --out ./out/`
-     - Then: complete the check in the browser window and press Enter in the terminal to continue.
-   - Print to stdout:
-     - `web2md '<url>' --print`
-   - Multiple URLs (batch):
-     - Create output dir (e.g. `./out/`) then run one `web2md` command per URL using `--out ./out/`
-5) Validate output:
-   - If writing files, verify they exist and are non-empty (e.g. `ls -la <path>` and `wc -c <path>`).
-6) Return:
-   - The saved file path(s), or the Markdown (stdout mode).
+   - If missing, instruct the user to install from `~/workspace/softaworks/projects/web2md`:
+     ```bash
+     cd ~/workspace/softaworks/projects/web2md && npm install && npm run build && npm link
+     ```
+3. Convert using the appropriate pattern:
+   - **Single URL to file:** `web2md '<url>' --out ./page.md`
+   - **Auto-named in directory:** `mkdir -p ./out && web2md '<url>' --out ./out/`
+   - **Login walls / human verification:** `web2md '<url>' --interactive --user-data-dir ./tmp/web2md-profile --out ./out/`
+   - **Print to stdout:** `web2md '<url>' --print`
+   - **Batch (multiple URLs):** Create output dir, then run one `web2md` command per URL with `--out ./out/`
+4. Validate output: verify files exist and are non-empty (`ls -la <path>` and `wc -c <path>`).
+5. Return the saved file path(s), or the Markdown content (stdout mode).
 
-## Defaults (recommended)
+## Rendering controls (for tricky pages)
 
-- For most pages: `--wait-until networkidle2`
-- For heavy apps: start with `--wait-until domcontentloaded --wait-ms 2000`, then add `--wait-for 'main'` (or another stable selector) if needed.
+Use these flags when pages don't render correctly with defaults:
+
+| Flag | Purpose |
+|------|---------|
+| `--wait-until networkidle2` | Default; wait for network to settle |
+| `--wait-until domcontentloaded --wait-ms 2000` | Heavy apps; add `--wait-for 'main'` if needed |
+| `--chrome-path <path>` | Override Chrome auto-detection |
+| `--interactive` | Pause for human login/captcha completion |
+| `--wait-for '<selector>'` | Wait for a specific CSS selector |
+| `--headful` | Show browser window for debugging |
+| `--no-sandbox` | Required in some containers/CI environments |
+| `--user-data-dir <dir>` | Persist login sessions across runs |
