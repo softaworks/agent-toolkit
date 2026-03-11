@@ -1,6 +1,6 @@
 ---
 name: crafting-effective-readmes
-description: Use when writing or improving README files. Not all READMEs are the same — provides templates and guidance matched to your audience and project type.
+description: Generate and improve README.md files — structure sections, write installation instructions, create usage examples, format code blocks, and add badges. Use when writing or improving README files, project documentation, repo descriptions, or markdown docs. Provides templates and guidance matched to your audience and project type.
 ---
 
 # Crafting Effective READMEs

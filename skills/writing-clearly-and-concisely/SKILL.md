@@ -1,6 +1,6 @@
 ---
 name: writing-clearly-and-concisely
-description: Use when writing prose humans will read—documentation, commit messages, error messages, explanations, reports, or UI text. Applies Strunk's timeless rules for clearer, stronger, more professional writing.
+description: Eliminate passive voice, remove unnecessary words, tighten sentence structure, and cut AI puffery from prose. Use when writing or editing documentation, commit messages, error messages, explanations, reports, or UI text. Applies Strunk's rules for clearer, stronger, more professional writing.
 ---
 
 # Writing Clearly and Concisely
@@ -85,6 +85,14 @@ LLMs regress to statistical means, producing generic, puffy prose. Avoid:
 - **Formatting overuse:** excessive bullets, emoji decorations, bold on every other word
 
 Be specific, not grandiose. Say what it actually does.
+
+### Before/After Examples
+
+| Before | After | Rule Applied |
+|--------|-------|-------------|
+| "The configuration was updated by the team" | "The team updated the configuration" | Active voice (Rule 10) |
+| "There are many developers who prefer TypeScript" | "Many developers prefer TypeScript" | Omit needless words (Rule 13) |
+| "This groundbreaking solution leverages cutting-edge technology to deliver a seamless experience" | "This tool uses WebSockets to sync data in real time" | Remove puffery, be specific (Rule 12) |
 
 For comprehensive research on why these patterns occur, see `signs-of-ai-writing.md`. Wikipedia editors developed this guide to detect AI-generated submissions — their patterns are well-documented and field-tested.
 

@@ -10,13 +10,6 @@ Converts OpenAPI 3.0 specifications to TypeScript interfaces and type guards.
 **Input:** OpenAPI file (JSON or YAML)
 **Output:** TypeScript file with interfaces and type guards
 
-## When to Use
-
-- "generate types from openapi"
-- "convert openapi to typescript"
-- "create API interfaces"
-- "generate types from spec"
-
 ## Workflow
 
 1. Request the OpenAPI file path (if not provided)
@@ -26,18 +19,12 @@ Converts OpenAPI 3.0 specifications to TypeScript interfaces and type guards.
 5. Generate TypeScript (interfaces + type guards)
 6. Ask where to save (default: `types/api.ts` in current directory)
 7. Write the file
+8. Validate output compiles: `tsc --noEmit types/api.ts` (if TypeScript is available)
+9. Report any compile errors and fix before finalizing
 
 ## OpenAPI Validation
 
-Check before processing:
-
-```
-- Field "openapi" must exist and start with "3.0"
-- Field "paths" must exist
-- Field "components.schemas" must exist (if there are types)
-```
-
-If invalid, report the error and stop.
+Before processing, verify: `openapi` field starts with `"3.0"`, `paths` exists, and `components.schemas` exists if types are expected. If invalid, report the specific error and stop.
 
 ## Type Mapping
 
@@ -53,13 +40,7 @@ If invalid, report the error and stop.
 
 ### Format Modifiers
 
-| Format        | TypeScript              |
-|---------------|-------------------------|
-| `uuid`        | `string` (comment UUID) |
-| `date`        | `string` (comment date) |
-| `date-time`   | `string` (comment ISO)  |
-| `email`       | `string` (comment email)|
-| `uri`         | `string` (comment URI)  |
+Format strings (`uuid`, `date`, `date-time`, `email`, `uri`) all map to `string` with a JSDoc comment noting the format.
 
 ### Complex Types
 
@@ -224,114 +205,34 @@ items: Product[]  // reference, not inline
 
 ## Complete Example
 
-**Input (OpenAPI):**
-```json
-{
-  "openapi": "3.0.0",
-  "components": {
-    "schemas": {
-      "User": {
-        "type": "object",
-        "properties": {
-          "id": {"type": "string", "format": "uuid"},
-          "email": {"type": "string", "format": "email"},
-          "role": {"type": "string", "enum": ["admin", "user"]}
-        },
-        "required": ["id", "email", "role"]
-      }
-    }
-  },
-  "paths": {
-    "/users/{id}": {
-      "get": {
-        "parameters": [{"name": "id", "in": "path", "required": true}],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {"$ref": "#/components/schemas/User"}
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-```
+Given a `User` schema with `id` (uuid), `email`, `role` (enum) and a `GET /users/{id}` endpoint, the generated output follows this structure:
 
-**Output (TypeScript):**
 ```typescript
-/**
- * Auto-generated from: api.openapi.json
- * Generated at: 2025-01-15T10:30:00Z
- *
- * DO NOT EDIT MANUALLY - Regenerate from OpenAPI schema
- */
-
-// ============================================================================
-// Types
-// ============================================================================
+// File header → Types (enums, interfaces) → Request/Response types → Type guards → Error types
 
 export type UserRole = "admin" | "user";
 
 export interface User {
   /** UUID */
   id: string;
-
   /** Email */
   email: string;
-
   role: UserRole;
 }
 
-// ============================================================================
-// Request/Response Types
-// ============================================================================
-
-export interface GetUserByIdRequest {
-  id: string;
-}
-
+export interface GetUserByIdRequest { id: string; }
 export type GetUserByIdResponse = User;
-
-// ============================================================================
-// Type Guards
-// ============================================================================
 
 export function isUser(value: unknown): value is User {
   return (
-    typeof value === 'object' &&
-    value !== null &&
-    'id' in value &&
-    typeof (value as any).id === 'string' &&
-    'email' in value &&
-    typeof (value as any).email === 'string' &&
-    'role' in value &&
-    ['admin', 'user'].includes((value as any).role)
+    typeof value === 'object' && value !== null &&
+    'id' in value && typeof (value as any).id === 'string' &&
+    'email' in value && typeof (value as any).email === 'string' &&
+    'role' in value && ['admin', 'user'].includes((value as any).role)
   );
 }
 
-// ============================================================================
-// Error Types
-// ============================================================================
-
-export interface ApiError {
-  status: number;
-  error: string;
-  detail?: string;
-}
-
-export function isApiError(value: unknown): value is ApiError {
-  return (
-    typeof value === 'object' &&
-    value !== null &&
-    'status' in value &&
-    typeof (value as any).status === 'number' &&
-    'error' in value &&
-    typeof (value as any).error === 'string'
-  );
-}
+// ApiError interface and isApiError guard always included (see Error Type section)
 ```
 
 ## Common Errors

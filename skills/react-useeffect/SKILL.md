@@ -1,6 +1,6 @@
 ---
 name: react-useeffect
-description: React useEffect best practices from official docs. Use when writing/reviewing useEffect, useState for derived values, data fetching, or state synchronization. Teaches when NOT to use Effect and better alternatives.
+description: React useEffect best practices and anti-patterns from official docs. Use when writing, reviewing, or refactoring useEffect hooks, replacing useState-derived values with direct calculations, optimizing re-renders with useMemo, or resetting component state with key props. Teaches when NOT to use an Effect and provides concrete code alternatives.
 ---
 
 # You Might Not Need an Effect
@@ -45,6 +45,46 @@ Need to respond to something?
 │       └── Expensive? Use useMemo
 └── Need to reset state when prop changes?
     └── Use KEY PROP on component
+```
+
+## Common Patterns: Before/After
+
+### Derived State (Most Common Anti-Pattern)
+
+```jsx
+// BAD: useState + useEffect for derived value
+const [fullName, setFullName] = useState('');
+useEffect(() => {
+  setFullName(firstName + ' ' + lastName);
+}, [firstName, lastName]);
+
+// GOOD: Calculate during render
+const fullName = firstName + ' ' + lastName;
+```
+
+### Expensive Calculation
+
+```jsx
+// BAD: useEffect to cache
+const [filtered, setFiltered] = useState([]);
+useEffect(() => {
+  setFiltered(items.filter(i => i.active));
+}, [items]);
+
+// GOOD: useMemo
+const filtered = useMemo(() => items.filter(i => i.active), [items]);
+```
+
+### Reset State on Prop Change
+
+```jsx
+// BAD: useEffect to reset
+useEffect(() => {
+  setComment('');
+}, [userId]);
+
+// GOOD: Key prop forces remount
+<CommentForm key={userId} />
 ```
 
 ## Detailed Guidance

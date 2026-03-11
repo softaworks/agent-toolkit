@@ -1,6 +1,6 @@
 ---
 name: reducing-entropy
-description: Manual-only skill for minimizing total codebase size. Only activate when explicitly requested by user. Measures success by final code amount, not effort. Bias toward deletion.
+description: "Use when the user asks to reduce code, clean up codebase, remove dead code, shrink footprint, or minimize code size. Manual-only — only activate when explicitly requested. Removes dead code, consolidates duplicate functions, eliminates unused dependencies, and simplifies over-engineered abstractions. Measures success by final line count, not effort. Bias toward deletion."
 ---
 
 # Reducing Entropy
@@ -63,6 +63,34 @@ Every change is an opportunity to delete. Ask:
 - **"Better separation of concerns"** - More files/functions = more code. Separation isn't free.
 - **"Type safety"** - Worth how many lines? Sometimes runtime checks in less code wins.
 - **"Easier to understand"** - 14 things are not easier than 2 things.
+
+## Reduction Workflow
+
+1. **Measure** — count lines before starting:
+   ```bash
+   find . -name '*.ts' -o -name '*.js' | xargs wc -l | tail -1
+   ```
+2. **Identify** dead code targets:
+   - Unused exports (no importers)
+   - Unreachable branches or feature-flagged dead paths
+   - Orphaned files with no references
+   - Duplicate functions doing the same thing with slight variations
+3. **Delete or consolidate** — apply changes
+4. **Verify** — run tests to confirm nothing breaks:
+   ```bash
+   npm test  # or the project's equivalent
+   ```
+5. **Measure again** — confirm the line count dropped. If it didn't, reconsider.
+
+## Concrete Example
+
+A module has 14 helper functions across 3 files (280 lines) for API response formatting:
+
+- **Before:** `formatUser()`, `formatPost()`, `formatComment()`, ... 14 functions, 280 lines
+- **After:** 1 generic `formatEntity(schema)` + a schema map, 45 lines
+- **Net result:** -235 lines. The 45 lines of new code deleted 280 lines of old code.
+
+The question is not "is 45 lines a lot to write?" — it is "is the codebase smaller after?"
 
 ## When This Doesn't Apply
 

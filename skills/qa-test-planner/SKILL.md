@@ -1,176 +1,60 @@
 ---
 name: qa-test-planner
-description: Generate comprehensive test plans, manual test cases, regression test suites, and bug reports for QA engineers. Includes Figma MCP integration for design validation.
-trigger: explicit
+description: Generate test plans, manual test cases, regression suites, and bug reports. Use when the user asks for QA documentation, testing strategies, test scenarios, acceptance criteria, test coverage plans, or needs to validate UI implementations against Figma designs. Trigger phrases include "write test cases", "create a test plan", "build regression suite", "QA this feature", "quality assurance", and "compare with Figma design".
 ---
 
 # QA Test Planner
 
-A comprehensive skill for QA engineers to create test plans, generate manual test cases, build regression test suites, validate designs against Figma, and document bugs effectively.
+Generate structured QA deliverables: test plans, manual test cases, regression suites, Figma design validation checklists, and bug reports.
 
-> **Activation:** This skill is triggered only when explicitly called by name (e.g., `/qa-test-planner`, `qa-test-planner`, or `use the skill qa-test-planner`).
+## Workflow
 
----
+1. **Analyze** the feature or requirement:
+   - Identify what test types are needed (functional, UI, integration, regression)
+   - Determine scope boundaries (what is in/out of testing)
+   - Assess risk areas and priorities
+2. **Generate** structured deliverables using the templates below
+3. **Validate** output completeness:
+   - Every test step has an expected result
+   - Preconditions and test data are documented
+   - Priority is assigned to each test case
+   - If validation fails, revise before delivering
 
-## Quick Start
+## Scripts
 
-**Create a test plan:**
-```
-"Create a test plan for the user authentication feature"
-```
-
-**Generate test cases:**
-```
-"Generate manual test cases for the checkout flow"
-```
-
-**Build regression suite:**
-```
-"Build a regression test suite for the payment module"
-```
-
-**Validate against Figma:**
-```
-"Compare the login page against the Figma design at [URL]"
-```
-
-**Create bug report:**
-```
-"Create a bug report for the form validation issue"
-```
-
----
+| Script | Purpose | Example |
+|--------|---------|---------|
+| `./scripts/generate_test_cases.sh` | Create test cases interactively | Run, then follow prompts for feature name, scope, and priority |
+| `./scripts/create_bug_report.sh` | Generate structured bug reports | Run, then provide reproduction steps, environment, and severity |
 
 ## Quick Reference
 
-| Task | What You Get | Time |
-|------|--------------|------|
-| Test Plan | Strategy, scope, schedule, risks | 10-15 min |
-| Test Cases | Step-by-step instructions, expected results | 5-10 min each |
-| Regression Suite | Smoke tests, critical paths, execution order | 15-20 min |
-| Figma Validation | Design-implementation comparison, discrepancy list | 10-15 min |
-| Bug Report | Reproducible steps, environment, evidence | 5 min |
-
----
-
-## How It Works
-
-```
-Your Request
-    │
-    ▼
-┌─────────────────────────────────────────────────────┐
-│ 1. ANALYZE                                          │
-│    • Parse feature/requirement                      │
-│    • Identify test types needed                     │
-│    • Determine scope and priorities                 │
-├─────────────────────────────────────────────────────┤
-│ 2. GENERATE                                         │
-│    • Create structured deliverables                 │
-│    • Apply templates and best practices             │
-│    • Include edge cases and variations              │
-├─────────────────────────────────────────────────────┤
-│ 3. VALIDATE                                         │
-│    • Check completeness                             │
-│    • Verify traceability                            │
-│    • Ensure actionable steps                        │
-└─────────────────────────────────────────────────────┘
-    │
-    ▼
-QA Deliverable Ready
-```
-
----
-
-## Commands
-
-### Interactive Scripts
-
-| Script | Purpose | Usage |
-|--------|---------|-------|
-| `./scripts/generate_test_cases.sh` | Create test cases interactively | Step-by-step prompts |
-| `./scripts/create_bug_report.sh` | Generate bug reports | Guided input collection |
-
-### Natural Language
-
 | Request | Output |
 |---------|--------|
-| "Create test plan for {feature}" | Complete test plan document |
-| "Generate {N} test cases for {feature}" | Numbered test cases with steps |
-| "Build smoke test suite" | Critical path tests |
-| "Compare with Figma at {URL}" | Visual validation checklist |
-| "Document bug: {description}" | Structured bug report |
-
----
-
-## Core Deliverables
-
-### 1. Test Plans
-- Test scope and objectives
-- Testing approach and strategy
-- Environment requirements
-- Entry/exit criteria
-- Risk assessment
-- Timeline and milestones
-
-### 2. Manual Test Cases
-- Step-by-step instructions
-- Expected vs actual results
-- Preconditions and setup
-- Test data requirements
-- Priority and severity
-
-### 3. Regression Suites
-- Smoke tests (15-30 min)
-- Full regression (2-4 hours)
-- Targeted regression (30-60 min)
-- Execution order and dependencies
-
-### 4. Figma Validation
-- Component-by-component comparison
-- Spacing and typography checks
-- Color and visual consistency
-- Interactive state validation
-
-### 5. Bug Reports
-- Clear reproduction steps
-- Environment details
-- Evidence (screenshots, logs)
-- Severity and priority
-
----
+| "Create test plan for {feature}" | Complete test plan with scope, strategy, risks, entry/exit criteria |
+| "Generate {N} test cases for {feature}" | Numbered test cases with steps and expected results |
+| "Build smoke test suite" | P0 critical-path tests (15-30 min execution) |
+| "Compare with Figma at {URL}" | Component-by-component visual validation checklist |
+| "Document bug: {description}" | Structured bug report with reproduction steps |
 
 ## Anti-Patterns
 
-| Avoid | Why | Instead |
-|-------|-----|---------|
-| Vague test steps | Can't reproduce | Specific actions + expected results |
-| Missing preconditions | Tests fail unexpectedly | Document all setup requirements |
-| No test data | Tester blocked | Provide sample data or generation |
-| Generic bug titles | Hard to track | Specific: "[Feature] issue when [action]" |
-| Skip edge cases | Miss critical bugs | Include boundary values, nulls |
-
----
+| Avoid | Instead |
+|-------|---------|
+| Vague test steps | Specific actions + expected results |
+| Missing preconditions | Document all setup requirements |
+| No test data | Provide sample data or generation instructions |
+| Generic bug titles | Specific: "[Feature] issue when [action]" |
+| Skipping edge cases | Include boundary values, nulls, empty states |
 
 ## Verification Checklist
 
-**Test Plan:**
-- [ ] Scope clearly defined (in/out)
-- [ ] Entry/exit criteria specified
-- [ ] Risks identified with mitigations
-- [ ] Timeline realistic
+After generating any deliverable, verify:
 
-**Test Cases:**
-- [ ] Each step has expected result
-- [ ] Preconditions documented
-- [ ] Test data available
-- [ ] Priority assigned
-
-**Bug Reports:**
-- [ ] Reproducible steps
-- [ ] Environment documented
-- [ ] Screenshots/evidence attached
-- [ ] Severity/priority set
+- [ ] **Test plans**: Scope defined (in/out), entry/exit criteria specified, risks identified with mitigations
+- [ ] **Test cases**: Each step has expected result, preconditions documented, test data available, priority assigned
+- [ ] **Bug reports**: Reproducible steps, environment documented, evidence attached, severity/priority set
+- [ ] **Figma validation**: Design specs extracted, implementation compared per-component, discrepancies logged as bugs
 
 ---
 
@@ -184,9 +68,7 @@ QA Deliverable Ready
 ---
 
 <details>
-<summary><strong>Deep Dive: Test Case Structure</strong></summary>
-
-### Standard Test Case Format
+<summary><strong>Template: Test Case</strong></summary>
 
 ```markdown
 ## TC-001: [Test Case Title]
@@ -195,158 +77,82 @@ QA Deliverable Ready
 **Type:** Functional | UI | Integration | Regression
 **Status:** Not Run | Pass | Fail | Blocked
 
-### Objective
-[What are we testing and why]
-
 ### Preconditions
 - [Setup requirement 1]
-- [Setup requirement 2]
 - [Test data needed]
 
 ### Test Steps
 1. [Action to perform]
    **Expected:** [What should happen]
-
 2. [Action to perform]
-   **Expected:** [What should happen]
-
-3. [Action to perform]
    **Expected:** [What should happen]
 
 ### Test Data
 - Input: [Test data values]
 - User: [Test account details]
-- Configuration: [Environment settings]
 
 ### Post-conditions
 - [System state after test]
 - [Cleanup required]
-
-### Notes
-- [Edge cases to consider]
-- [Related test cases]
-- [Known issues]
 ```
-
-### Test Types
-
-| Type | Focus | Example |
-|------|-------|---------|
-| Functional | Business logic | Login with valid credentials |
-| UI/Visual | Appearance, layout | Button matches Figma design |
-| Integration | Component interaction | API returns data to frontend |
-| Regression | Existing functionality | Previous features still work |
-| Performance | Speed, load handling | Page loads under 3 seconds |
-| Security | Vulnerabilities | SQL injection prevented |
 
 </details>
 
 <details>
-<summary><strong>Deep Dive: Test Plan Template</strong></summary>
-
-### Test Plan Structure
+<summary><strong>Template: Test Plan</strong></summary>
 
 ```markdown
 # Test Plan: [Feature/Release Name]
 
 ## Executive Summary
-- Feature/product being tested
-- Testing objectives
-- Key risks
-- Timeline overview
+- Feature being tested, objectives, key risks, timeline
 
 ## Test Scope
-
-**In Scope:**
-- Features to be tested
-- Test types (functional, UI, performance)
-- Platforms and environments
-- User flows and scenarios
-
-**Out of Scope:**
-- Features not being tested
-- Known limitations
-- Third-party integrations (if applicable)
+**In Scope:** Features, test types, platforms, user flows
+**Out of Scope:** Features excluded, known limitations
 
 ## Test Strategy
-
-**Test Types:**
-- Manual testing
-- Exploratory testing
-- Regression testing
-- Integration testing
-- User acceptance testing
-
-**Test Approach:**
-- Black box testing
-- Positive and negative testing
-- Boundary value analysis
-- Equivalence partitioning
+- Test types: Manual, exploratory, regression, integration, UAT
+- Approach: Black box, positive/negative, boundary value analysis
 
 ## Test Environment
-- Operating systems
-- Browsers and versions
-- Devices (mobile, tablet, desktop)
-- Test data requirements
-- Backend/API environments
+- OS, browsers, devices, test data, backend environments
 
 ## Entry Criteria
 - [ ] Requirements documented
-- [ ] Designs finalized
 - [ ] Test environment ready
-- [ ] Test data prepared
 - [ ] Build deployed
 
 ## Exit Criteria
 - [ ] All high-priority test cases executed
-- [ ] 90%+ test case pass rate
-- [ ] All critical bugs fixed
-- [ ] No open high-severity bugs
-- [ ] Regression suite passed
+- [ ] 90%+ pass rate
+- [ ] No open critical bugs
 
 ## Risk Assessment
-
 | Risk | Probability | Impact | Mitigation |
 |------|-------------|--------|------------|
 | [Risk 1] | H/M/L | H/M/L | [Mitigation] |
-
-## Test Deliverables
-- Test plan document
-- Test cases
-- Test execution reports
-- Bug reports
-- Test summary report
 ```
 
 </details>
 
 <details>
-<summary><strong>Deep Dive: Bug Reporting</strong></summary>
-
-### Bug Report Template
+<summary><strong>Template: Bug Report</strong></summary>
 
 ```markdown
 # BUG-[ID]: [Clear, specific title]
 
 **Severity:** Critical | High | Medium | Low
 **Priority:** P0 | P1 | P2 | P3
-**Type:** Functional | UI | Performance | Security
-**Status:** Open | In Progress | Fixed | Closed
 
 ## Environment
 - **OS:** [Windows 11, macOS 14, etc.]
 - **Browser:** [Chrome 120, Firefox 121, etc.]
-- **Device:** [Desktop, iPhone 15, etc.]
 - **Build:** [Version/commit]
-- **URL:** [Page where bug occurs]
-
-## Description
-[Clear, concise description of the issue]
 
 ## Steps to Reproduce
 1. [Specific step]
 2. [Specific step]
-3. [Specific step]
 
 ## Expected Behavior
 [What should happen]
@@ -354,306 +160,63 @@ QA Deliverable Ready
 ## Actual Behavior
 [What actually happens]
 
-## Visual Evidence
-- Screenshot: [attached]
-- Video: [link if applicable]
-- Console errors: [paste errors]
-
 ## Impact
-- **User Impact:** [How many users affected]
 - **Frequency:** [Always, Sometimes, Rarely]
 - **Workaround:** [If one exists]
-
-## Additional Context
-- Related to: [Feature/ticket]
-- Regression: [Yes/No]
-- Figma design: [Link if UI bug]
+- **Figma design:** [Link if UI bug]
 ```
-
-### Severity Definitions
-
-| Level | Criteria | Examples |
-|-------|----------|----------|
-| **Critical (P0)** | System crash, data loss, security | Payment fails, login broken |
-| **High (P1)** | Major feature broken, no workaround | Search not working |
-| **Medium (P2)** | Feature partial, workaround exists | Filter missing one option |
-| **Low (P3)** | Cosmetic, rare edge cases | Typo, minor alignment |
 
 </details>
 
 <details>
-<summary><strong>Deep Dive: Figma MCP Integration</strong></summary>
+<summary><strong>Figma MCP Validation Process</strong></summary>
 
-### Design Validation Workflow
+**Prerequisites:** Figma MCP server configured, access to design files.
 
-**Prerequisites:**
-- Figma MCP server configured
-- Access to Figma design files
-- Figma URLs for components/pages
-
-**Process:**
-
-1. **Get Design Specs from Figma**
+**Step 1 — Extract design specs:**
 ```
 "Get the button specifications from Figma file [URL]"
-
-Response includes:
-- Dimensions (width, height)
-- Colors (background, text, border)
-- Typography (font, size, weight)
-- Spacing (padding, margin)
-- Border radius
-- States (default, hover, active, disabled)
+→ Returns: dimensions, colors, typography, spacing, border radius, states
 ```
 
-2. **Compare Implementation**
+**Step 2 — Compare implementation against specs:**
 ```
 TC: Primary Button Visual Validation
 1. Inspect primary button in browser dev tools
-2. Compare against Figma specs:
-   - Dimensions: 120x40px
-   - Border-radius: 8px
-   - Background color: #0066FF
-   - Font: 16px Medium #FFFFFF
+2. Compare: dimensions (120x40px), border-radius (8px), background (#0066FF), font (16px Medium #FFFFFF)
 3. Document discrepancies
 ```
 
-3. **Create Bug if Mismatch**
+**Step 3 — File bug if mismatch:**
 ```
 BUG: Primary button color doesn't match design
-Severity: Medium
-Expected (Figma): #0066FF
-Actual (Implementation): #0052CC
-Screenshot: [attached]
-Figma link: [specific component]
+Expected (Figma): #0066FF | Actual: #0052CC
 ```
 
-### What to Validate
-
-| Element | What to Check | Tool |
-|---------|---------------|------|
-| Colors | Hex values exact | Browser color picker |
-| Spacing | Padding/margin px | DevTools computed styles |
-| Typography | Font, size, weight | DevTools font panel |
-| Layout | Width, height, position | DevTools box model |
-| States | Hover, active, focus | Manual interaction |
-| Responsive | Breakpoint behavior | DevTools device mode |
-
-### Example Queries
-```
-"Get button specifications from Figma design [URL]"
-"Compare navigation menu implementation against Figma design"
-"Extract spacing values for dashboard layout from Figma"
-"List all color tokens used in Figma design system"
-```
+**What to validate per component:** Colors (exact hex), spacing (padding/margin px), typography (font/size/weight), layout (width/height), interactive states (hover/active/focus), responsive breakpoints.
 
 </details>
 
 <details>
-<summary><strong>Deep Dive: Regression Testing</strong></summary>
+<summary><strong>Regression Suite Building</strong></summary>
 
-### Suite Structure
+| Suite Type | Duration | When to Run |
+|------------|----------|-------------|
+| Smoke | 15-30 min | Daily / every deploy |
+| Targeted | 30-60 min | Per feature change |
+| Full | 2-4 hours | Weekly / pre-release |
 
-| Suite Type | Duration | Frequency | Coverage |
-|------------|----------|-----------|----------|
-| Smoke | 15-30 min | Daily | Critical paths only |
-| Targeted | 30-60 min | Per change | Affected areas |
-| Full | 2-4 hours | Weekly/Release | Comprehensive |
-| Sanity | 10-15 min | After hotfix | Quick validation |
+**Build process:**
+1. Identify critical paths (revenue, security, high-usage features)
+2. Assign priorities: P0 (always run), P1 (weekly+), P2 (releases only)
+3. Execute in order: Smoke → P0 → P1 → P2 → Exploratory
+4. If any P0 fails → stop execution, fix build, restart
 
-### Building a Regression Suite
-
-**Step 1: Identify Critical Paths**
-- What can users NOT live without?
-- What generates revenue?
-- What handles sensitive data?
-- What's used most frequently?
-
-**Step 2: Prioritize Test Cases**
-
-| Priority | Description | Must Run |
-|----------|-------------|----------|
-| P0 | Business-critical, security | Always |
-| P1 | Major features, common flows | Weekly+ |
-| P2 | Minor features, edge cases | Releases |
-
-**Step 3: Execution Order**
-1. Smoke first - if fails, stop and fix build
-2. P0 tests next - must pass before proceeding
-3. P1 then P2 - track all failures
-4. Exploratory - find unexpected issues
-
-### Pass/Fail Criteria
-
-**PASS:**
-- All P0 tests pass
-- 90%+ P1 tests pass
-- No critical bugs open
-
-**FAIL (Block Release):**
-- Any P0 test fails
-- Critical bug discovered
-- Security vulnerability
-- Data loss scenario
-
-**CONDITIONAL:**
-- P1 failures with workarounds
-- Known issues documented
-- Fix plan in place
-
-</details>
-
-<details>
-<summary><strong>Deep Dive: Test Execution Tracking</strong></summary>
-
-### Test Run Report Template
-
-```markdown
-# Test Run: [Release Version]
-
-**Date:** 2024-01-15
-**Build:** v2.5.0-rc1
-**Tester:** [Name]
-**Environment:** Staging
-
-## Summary
-- Total Test Cases: 150
-- Executed: 145
-- Passed: 130
-- Failed: 10
-- Blocked: 5
-- Not Run: 5
-- Pass Rate: 90%
-
-## Test Cases by Priority
-
-| Priority | Total | Pass | Fail | Blocked |
-|----------|-------|------|------|---------|
-| P0 (Critical) | 25 | 23 | 2 | 0 |
-| P1 (High) | 50 | 45 | 3 | 2 |
-| P2 (Medium) | 50 | 45 | 3 | 2 |
-| P3 (Low) | 25 | 17 | 2 | 1 |
-
-## Critical Failures
-- TC-045: Payment processing fails
-  - Bug: BUG-234
-  - Status: Open
-
-## Blocked Tests
-- TC-112: Dashboard widget (API endpoint down)
-
-## Risks
-- 2 critical bugs blocking release
-- Payment integration needs attention
-
-## Next Steps
-- Retest after BUG-234 fix
-- Complete remaining 5 test cases
-- Run full regression before sign-off
-```
-
-### Coverage Tracking
-
-```markdown
-## Coverage Matrix
-
-| Feature | Requirements | Test Cases | Status | Gaps |
-|---------|--------------|------------|--------|------|
-| Login | 8 | 12 | Complete | None |
-| Checkout | 15 | 10 | Partial | Payment errors |
-| Dashboard | 12 | 15 | Complete | None |
-```
-
-</details>
-
-<details>
-<summary><strong>QA Process Workflow</strong></summary>
-
-### Phase 1: Planning
-- [ ] Review requirements and designs
-- [ ] Create test plan
-- [ ] Identify test scenarios
-- [ ] Estimate effort and timeline
-- [ ] Set up test environment
-
-### Phase 2: Test Design
-- [ ] Write test cases
-- [ ] Review test cases with team
-- [ ] Prepare test data
-- [ ] Build regression suite
-- [ ] Get Figma design access
-
-### Phase 3: Execution
-- [ ] Execute test cases
-- [ ] Log bugs with clear steps
-- [ ] Validate against Figma (UI tests)
-- [ ] Track test progress
-- [ ] Communicate blockers
-
-### Phase 4: Reporting
-- [ ] Compile test results
-- [ ] Analyze coverage
-- [ ] Document risks
-- [ ] Provide go/no-go recommendation
-- [ ] Archive test artifacts
-
-</details>
-
-<details>
-<summary><strong>Best Practices</strong></summary>
-
-### Test Case Writing
-
-**DO:**
-- Be specific and unambiguous
-- Include expected results for each step
-- Test one thing per test case
-- Use consistent naming conventions
-- Keep test cases maintainable
-
-**DON'T:**
-- Assume knowledge
-- Make test cases too long
-- Skip preconditions
-- Forget edge cases
-- Leave expected results vague
-
-### Bug Reporting
-
-**DO:**
-- Provide clear reproduction steps
-- Include screenshots/videos
-- Specify exact environment details
-- Describe impact on users
-- Link to Figma for UI bugs
-
-**DON'T:**
-- Report without reproduction steps
-- Use vague descriptions
-- Skip environment details
-- Forget to assign priority
-- Duplicate existing bugs
-
-### Regression Testing
-
-**DO:**
-- Automate repetitive tests when possible
-- Maintain regression suite regularly
-- Prioritize critical paths
-- Run smoke tests frequently
-- Update suite after each release
-
-**DON'T:**
-- Skip regression before releases
-- Let suite become outdated
-- Test everything every time
-- Ignore failed regression tests
+**Release gate:** All P0 pass, 90%+ P1 pass, no critical bugs open. If P1 failures have workarounds and fix plan exists → conditional pass.
 
 </details>
 
 ---
-
-## Examples
 
 <details>
 <summary><strong>Example: Login Flow Test Case</strong></summary>
@@ -661,97 +224,54 @@ Figma link: [specific component]
 ```markdown
 ## TC-LOGIN-001: Valid User Login
 
-**Priority:** P0 (Critical)
-**Type:** Functional
-**Estimated Time:** 2 minutes
-
-### Objective
-Verify users can successfully login with valid credentials
+**Priority:** P0 (Critical)  |  **Type:** Functional
 
 ### Preconditions
 - User account exists (test@example.com / Test123!)
-- User is not already logged in
-- Browser cookies cleared
+- User is not logged in, browser cookies cleared
 
 ### Test Steps
 1. Navigate to https://app.example.com/login
    **Expected:** Login page displays with email and password fields
-
 2. Enter email: test@example.com
    **Expected:** Email field accepts input
-
 3. Enter password: Test123!
    **Expected:** Password field shows masked characters
-
 4. Click "Login" button
-   **Expected:**
-   - Loading indicator appears
-   - User redirected to /dashboard
-   - Welcome message shown: "Welcome back, Test User"
-   - Avatar/profile image displayed in header
+   **Expected:** Loading indicator → redirect to /dashboard → "Welcome back, Test User" shown
 
 ### Post-conditions
-- User session created
-- Auth token stored
-- Analytics event logged
+- User session created, auth token stored
 
-### Edge Cases to Consider
-- TC-LOGIN-002: Invalid password
-- TC-LOGIN-003: Non-existent email
-- TC-LOGIN-004: SQL injection attempt
-- TC-LOGIN-005: Very long password
+### Related Edge Cases
+- TC-LOGIN-002: Invalid password → error message shown
+- TC-LOGIN-003: Non-existent email → "account not found"
+- TC-LOGIN-004: SQL injection attempt → input sanitized
 ```
 
 </details>
 
 <details>
-<summary><strong>Example: Responsive Design Test Case</strong></summary>
+<summary><strong>Example: Figma Responsive Validation</strong></summary>
 
 ```markdown
 ## TC-UI-045: Mobile Navigation Menu
 
-**Priority:** P1 (High)
-**Type:** UI/Responsive
-**Devices:** Mobile (iPhone, Android)
-
-### Objective
-Verify navigation menu works correctly on mobile devices
+**Priority:** P1 (High)  |  **Type:** UI/Responsive
 
 ### Preconditions
-- Access from mobile device or responsive mode
-- Viewport width: 375px (iPhone SE) to 428px (iPhone Pro Max)
+- Viewport width: 375px–428px (mobile range)
 
 ### Test Steps
 1. Open homepage on mobile device
    **Expected:** Hamburger menu icon visible (top-right)
-
 2. Tap hamburger icon
-   **Expected:**
-   - Menu slides in from right
-   - Overlay appears over content
-   - Close (X) button visible
-
-3. Tap menu item
-   **Expected:** Navigate to section, menu closes
-
-4. Compare against Figma mobile design [link]
-   **Expected:**
-   - Menu width: 280px
-   - Slide animation: 300ms ease-out
-   - Overlay opacity: 0.5, color #000000
-   - Font size: 16px, line-height 24px
+   **Expected:** Menu slides in from right, overlay appears, close (X) button visible
+3. Compare against Figma mobile design [link]
+   **Expected:** Menu width 280px, slide animation 300ms ease-out, overlay opacity 0.5 #000000, font 16px/24px
 
 ### Breakpoints to Test
-- 375px (iPhone SE)
-- 390px (iPhone 14)
-- 428px (iPhone 14 Pro Max)
-- 360px (Galaxy S21)
+375px (iPhone SE), 390px (iPhone 14), 428px (iPhone Pro Max), 360px (Galaxy S21)
 ```
 
 </details>
-
----
-
-**"Testing shows the presence, not the absence of bugs." - Edsger Dijkstra**
-
-**"Quality is not an act, it is a habit." - Aristotle**

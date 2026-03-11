@@ -1,6 +1,6 @@
 ---
 name: difficult-workplace-conversations
-description: Structured approach to workplace conflicts, performance discussions, and challenging feedback using preparation-delivery-followup framework. Use when preparing for tough conversations, addressing conflicts, giving critical feedback, or navigating sensitive workplace discussions.
+description: Draft talking points, create conversation openers, and generate follow-up action plans for workplace conflicts, performance discussions, and challenging feedback using a preparation-delivery-followup framework. Use when preparing for tough conversations, addressing conflicts, giving critical feedback, or navigating sensitive workplace discussions.
 allowed-tools: Read, Glob, Grep
 ---
 
@@ -89,30 +89,15 @@ Difficult conversations succeed or fail based on three phases:
    - Rebuild trust over time
    - Watch for regression
 
-## Key Principles
-
-### Separate Impact from Intent
-
-**What happened:** Observable behavior
-**What I felt:** Your emotional response
-**What I assume:** Their intention (often wrong)
-
-Focus conversation on behavior and impact, not assumed intentions.
+## Key Frameworks
 
 ### The SBI Model
 
+Use this structure for all feedback delivery:
+
 **Situation:** When and where did this happen?
-**Behavior:** What specifically did they do/say?
+**Behavior:** What specifically did they do/say? (observable facts, not interpretation)
 **Impact:** What was the effect on you, the team, or the work?
-
-### Managing Emotions
-
-| If You Feel | Before Acting |
-| ----------- | ------------- |
-| Angry | Wait 24 hours, write but don't send |
-| Hurt | Talk to neutral party first |
-| Anxious | Practice the conversation |
-| Defensive | Identify your contribution |
 
 ### When to Escalate
 
