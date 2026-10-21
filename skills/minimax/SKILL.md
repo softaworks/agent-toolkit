@@ -1,52 +1,63 @@
 ---
 name: minimax
-description: Configure MiniMax text models, regional API endpoints, capabilities, thinking behavior, and token pricing. Use when users mention MiniMax-M3, MiniMax-M2.7, MiniMax API setup, or MiniMax regions.
+description: Configure MiniMax-M3.1-Flash and MiniMax-M3 text models, regional API endpoints, capabilities, reasoning behavior, and token pricing. Use when users mention MiniMax-M3.1-Flash, MiniMax-M3, MiniMax API setup, or MiniMax regions.
 ---
 
 # MiniMax Provider Guide
 
-Use this skill when configuring a MiniMax text model or selecting a MiniMax API region.
+Use this skill when configuring an active MiniMax text model or preserving an existing MiniMax configuration.
 
 ## Configuration Workflow
 
-1. Ask which region the user needs: `global_en` or `cn_zh`. Default to `global_en` only when no region is specified.
-2. Ask whether the integration uses the chat completions API or the messages API.
-3. Select the model from the capability table below.
-4. Use the matching regional base URL. Do not combine endpoints from different regions.
+1. Select `MiniMax-M3.1-Flash` as the ordinary default, followed by `MiniMax-M3` when the request needs the broader M3 capability profile.
+2. Preserve an explicitly saved, custom, or legacy model ID. Do not silently replace an existing `MiniMax-M2.7` selection.
+3. Select the user's region and protocol. Keep the region and endpoint family together.
+4. Use the native Responses API when the client supports it, or keep an existing Chat Completions or Anthropic Messages integration working. Responses stateful fields are not a substitute for client-side history.
 5. Read the API key from `MINIMAX_API_KEY`. Never print, log, or commit it.
-6. Present the chosen model, region, API style, base URL, and capability assumptions before making changes.
+6. Present the chosen model, region, protocol, endpoint, and capability assumptions before making changes.
 
 ## Regional Endpoints
 
-| Region | Chat completions base URL | Messages base URL | Documentation |
-| --- | --- | --- | --- |
-| `global_en` | `https://api.minimax.io/v1` | `https://api.minimax.io/anthropic` | `https://platform.minimax.io/docs` |
-| `cn_zh` | `https://api.minimaxi.com/v1` | `https://api.minimaxi.com/anthropic` | `https://platform.minimaxi.com/docs` |
+| Region | OpenAI-compatible base URL | Responses path | Anthropic Messages base URL | Documentation |
+| --- | --- | --- | --- | --- |
+| `global_en` | `https://api.minimax.io/v1` | `/responses` | `https://api.minimax.io/anthropic` | `https://platform.minimax.io/docs` |
+| `cn_zh` | `https://api.minimaxi.com/v1` | `/responses` | `https://api.minimaxi.com/anthropic` | `https://platform.minimaxi.com/docs` |
 
-## Model Selection
+The current official Flash Responses contract documents `POST https://api.minimax.io/v1/responses`. Regional endpoint availability and account entitlement must be verified for the selected region; do not infer China or third-party gateway Flash support from the international documentation.
 
-| Model | Context window | Input modalities | Thinking behavior |
-| --- | ---: | --- | --- |
-| `MiniMax-M3` | 1,000,000 tokens | text, image, video | adaptive or disabled |
-| `MiniMax-M2.7` | 204,800 tokens | text | always on |
+## Active Model Selection
 
-Choose `MiniMax-M3` when the request needs image or video input, a context window above 204,800 tokens, or configurable thinking. Choose `MiniMax-M2.7` for text-only requests that require always-on thinking.
+| Order | Model | Context window | Max output | Input modalities | Reasoning behavior |
+| ---: | --- | ---: | ---: | --- | --- |
+| 1 | `MiniMax-M3.1-Flash` | 1,000,000 tokens | 524,288 tokens | text, image, video | adaptive only; default effort `max` |
+| 2 | `MiniMax-M3` | 1,000,000 tokens | provider-defined | text, image, video | adaptive or disabled; effort is ignored |
+
+For Flash, accepted effort values are `low`, `medium`, `high`, `xhigh`, and `max`; `none` is rejected. OpenAI-compatible clients send `reasoning_effort`; Anthropic clients send `output_config.effort`. Do not send unsupported `service_tier` or `reasoning_split` fields.
+
+For M3, omitted thinking is off in the Responses contract. A non-`none` effort turns reasoning on without tuning its depth. Keep the client-side tool and reasoning history because `store`, `previous_response_id`, `conversation`, and truncation state are unsupported or ignored by the Responses contract.
+
+## Legacy Compatibility
+
+`MiniMax-M2.7` is retained for existing saved, custom, or legacy configurations. Do not present it ahead of the active Flash or M3 choices, and do not reset a stored model ID merely because it is absent from the active defaults. Its older text-only capability and always-on reasoning behavior do not describe Flash or M3.
 
 ## Token Pricing
 
-Prices are in USD per million tokens.
+Prices are in USD per million tokens and are estimates only. Confirm the provider's current pricing before quoting a bill.
 
 | Model | Input | Output | Cache read | Cache write |
 | --- | ---: | ---: | ---: | ---: |
-| `MiniMax-M3` | $0.60 | $2.40 | $0.12 | Not specified |
-| `MiniMax-M2.7` | $0.30 | $1.20 | $0.06 | $0.375 |
+| `MiniMax-M3.1-Flash` | $0.15 | $0.60 | $0.015 | Not specified |
+| `MiniMax-M3` standard requests | $0.30 | $1.20 | $0.06 | Not specified |
+| `MiniMax-M3` larger requests | $0.60 | $2.40 | $0.12 | Not specified |
 
-Use these values for estimates only. State the assumptions and calculate each token category separately.
+Apply the M3 rate supplied by the provider for the request size; do not invent a boundary from an application-side token count. The current Flash cache-write price is not specified in the verified contract.
 
 ## Validation Checklist
 
-- The model ID is exactly `MiniMax-M3` or `MiniMax-M2.7`.
-- The endpoint belongs to the selected region.
-- Image and video inputs are used only with `MiniMax-M3`.
-- Thinking is always on for `MiniMax-M2.7`.
+- Ordinary choices list `MiniMax-M3.1-Flash` first and `MiniMax-M3` second.
+- Explicit saved, custom, and legacy model IDs remain usable, including `MiniMax-M2.7`.
+- The endpoint belongs to the selected region and protocol.
+- Flash reasoning uses only adaptive effort values; `none`, `service_tier`, and `reasoning_split` are not sent.
+- M3 multimodal inputs remain available and its effort behavior is preserved.
+- Responses tool and reasoning history is retained client-side.
 - The API key remains in `MINIMAX_API_KEY` and is never included in output.

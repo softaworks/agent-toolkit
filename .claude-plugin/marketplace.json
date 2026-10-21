@@ -61,7 +61,7 @@
     },
     {
       "name": "minimax",
-      "description": "Configure MiniMax text models, regional API endpoints, capabilities, thinking behavior, and token pricing.",
+      "description": "Configure MiniMax-M3.1-Flash and MiniMax-M3 text models, regional API endpoints, reasoning behavior, and token pricing.",
       "source": "./dist/plugins/minimax",
       "strict": false,
       "skills": [
@@ -71,6 +71,7 @@
       "keywords": [
         "ai",
         "minimax",
+        "minimax-m3.1-flash",
         "regional-endpoints",
         "model-configuration"
       ]
