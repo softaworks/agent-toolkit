@@ -112,6 +112,7 @@ Add skills to project knowledge or paste SKILL.md contents into the conversation
 | 📝 Documentation | [marp-slide](skills/marp-slide/README.md) | Professional presentation slides |
 | 📝 Documentation | [mermaid-diagrams](skills/mermaid-diagrams/README.md) | Software diagrams with Mermaid |
 | 📝 Documentation | [writing-clearly-and-concisely](skills/writing-clearly-and-concisely/README.md) | Clear, professional writing |
+| 📝 Documentation | [dopamine-talk](skills/dopamine-talk/README.md) | Direct coding-agent explanations without hedging, file-path recaps, or unasked critic-gates |
 | 🎨 Design & Frontend | [design-system-starter](skills/design-system-starter/README.md) | Create design systems |
 | 🎨 Design & Frontend | [mui](skills/mui/README.md) | Material-UI v7 patterns |
 | 🎨 Design & Frontend | [openapi-to-typescript](skills/openapi-to-typescript/README.md) | Convert OpenAPI to TypeScript |

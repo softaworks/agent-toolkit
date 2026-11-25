@@ -270,6 +270,22 @@
       ]
     },
     {
+      "name": "dopamine-talk",
+      "description": "Cut file-path recaps, trailing hedging disclaimers, boilerplate padding, and unasked critic-gates from coding agent replies. Use when asking for direct workflow explanations, before/after estimates, or creative engineering ideas.",
+      "source": "./dist/plugins/dopamine-talk",
+      "strict": false,
+      "skills": [
+        "./skills/dopamine-talk"
+      ],
+      "category": "documentation",
+      "keywords": [
+        "documentation",
+        "communication",
+        "writing",
+        "clarity"
+      ]
+    },
+    {
       "name": "design-system-starter",
       "description": "Create and evolve design systems with design tokens, component architecture, accessibility guidelines, and documentation templates.",
       "source": "./dist/plugins/design-system-starter",
